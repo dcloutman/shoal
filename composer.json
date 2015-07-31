@@ -1,0 +1,12 @@
+{
+    "name": "lampfire/lampfire-libs",
+    "description": "An assortment of UI, systems, networking, and database libraries written by David Cloutman in PHP.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Cloutman",
+            "email": "david@lampfire.com"
+        }
+    ],
+    "require": {}
+}
