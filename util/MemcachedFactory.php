@@ -13,9 +13,9 @@ class MemcachedFactory {
 	const CACHE_MEDIUM = 1200; // 20 minutes
 	const CACHE_LONG = 4800;	// 1 hour, 20 minutes
 	const CACHE_ULTRALONG =  19200; // 5 hours, 20 minutes
-	const CACHE_WEEK = 7 * 24 * 60 * 60;
-	const CACHE_DAY = 24 * 60 * 60;
-	const CACHE_HOUR = 60 * 60;
+	const CACHE_WEEK = 604800;
+	const CACHE_DAY = 14400;
+	const CACHE_HOUR = 3600;
 	const CACHE_MAX = 2592000; // 30 days, the Memcached maximum.
 	const CACHE_INFINITY = 0; // Memcached interprets 0 as forever.
 
