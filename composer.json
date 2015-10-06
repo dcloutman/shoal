@@ -1,5 +1,5 @@
 {
-    "name": "lampfire/lampfire-libs",
+    "name": "lampfire/shoal",
     "description": "An assortment of UI, systems, networking, and database libraries written by David Cloutman in PHP.",
     "license": "MIT",
     "authors": [
@@ -8,5 +8,7 @@
             "email": "david@lampfire.com"
         }
     ],
-    "require": {}
+    "require": {
+          "php": ">=5.4"
+    }
 }
