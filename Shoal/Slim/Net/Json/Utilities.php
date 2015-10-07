@@ -8,7 +8,7 @@ class Utilities {
 	 *  @param integer $status_code A valid HTTP status code.
 	 *  @
 	 */
-	public static function configure_json_response ( \Slim\Slim $app, $status_code, \Net\Json\Ajax\AjaxResponse $json ) {
+	public static function configure_json_response ( \Slim\Slim $app, $status_code, \Shoal\Net\Json\AjaxResponse $json ) {
 		$app->response->setStatus( $status_code );
 		$app->response->headers->set( 'Content-Type', 'application/json' );
 		$app->response->setBody( $json );
