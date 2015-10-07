@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Ui;
+namespace Shoal\Ui;
 
 class TextInput extends Input {
 

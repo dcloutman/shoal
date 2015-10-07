@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Ui;
+namespace Shoal\Ui;
 class HiddenInput extends Input {
 
 	function __construct() {

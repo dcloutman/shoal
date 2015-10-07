@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Net\Json;
+namespace Shoal\Net\Json;
 
 /** An error reporting class that serializes to JSON by default.
  */

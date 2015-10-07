@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Ui;
+namespace Shoal\Ui;
 
 class TextArea extends Input implements HasClosingTag {
 	use ContentTrait;

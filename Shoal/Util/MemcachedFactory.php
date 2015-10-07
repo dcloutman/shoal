@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Util;
+namespace Shoal\Util;
 
 
 /** This class generates a Memcached (with a 'd') class for the configured server pool. It

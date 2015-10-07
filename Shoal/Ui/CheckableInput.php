@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Ui;
+namespace Shoal\Ui;
 
 /** A parent class for checkboxes and radio buttons or any input that uses a "checked" attibute.
  */

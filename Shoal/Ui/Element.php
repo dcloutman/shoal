@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Ui;
+namespace Shoal\Ui;
 
 abstract class Element {
 	/** @var $id Should be set by the inheriting classes.

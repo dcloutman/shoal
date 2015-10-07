@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Ui;
+namespace Shoal\Ui;
 
 class Select extends Element implements HasClosingTag {
 	protected $content = '';

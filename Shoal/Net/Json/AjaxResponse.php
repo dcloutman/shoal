@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Net\Json;
+namespace Shoal\Net\Json;
 
 /** A base response class.
  */

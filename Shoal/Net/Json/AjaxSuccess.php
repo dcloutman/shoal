@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Net\Json;
+namespace Shoal\Net\Json;
 
 /** A wrapper class to report successful submissions that serializes to JSON by default.
  */

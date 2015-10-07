@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Slim\Net\Json;
+namespace Shoal\Slim\Net\Json;
 
 class Utilities {
 

@@ -1,5 +1,5 @@
 <?php
-namespace \Lampfire\Shoal\Util;
+namespace Shoal\Util;
 
 /** Wraps flash routines that read and write into $_SESSION into an object.
  */
