@@ -1,6 +1,8 @@
 <?php
 namespace Shoal\Net\Json;
 
+use Shoal\Net\Json\AjaxError;
+
 /** A wrapper class to report successful submissions that serializes to JSON by default.
  */
 class AjaxSuccess extends AjaxResponse {
@@ -28,6 +30,14 @@ class AjaxSuccess extends AjaxResponse {
 	 *  @return string
 	 */
 	public function __toString () {
-		return json_encode( $this );
+		$json_value = json_encode( $this );
+		if ( false === is_string($json_value) ) {
+			// __toString() cannot throw an exception, so this:
+			$conversion_error = new AjaxError();
+			$conversion_error->set_message( 'Could not convert AjaxSuccess instance to JSON encoded string. Data may not be correctly encoded.' );
+
+			$json_value = json_encode( $conversion_error );
+		}
+		return $json_value;
 	}
 }
