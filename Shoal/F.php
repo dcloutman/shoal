@@ -18,4 +18,17 @@ class F {
 		return false;
 	}
 
+
+	/** Takes an array of arrays that share a common key with a presumed unique value and returns a new array of arrays indexed by that value.
+	 */
+	public static function reindex_by_multi_value($array, $index_key) {
+		$result = [];
+		foreach ($array as $member) {
+			$result[$member[$index_key]] = $member;
+		}
+
+		return $result;
+	}
+
 }
+
