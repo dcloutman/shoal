@@ -20,8 +20,8 @@ class In {
 		echo $prompt;
 		$text = trim(fgets($this->in, $this->max_len));
 
-		$this->in = $text;
-	return $this->in;
+		$this->last_input = $text;
+	return $this->last_input;
 	}
 
 	public function __toString() {
