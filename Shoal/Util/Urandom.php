@@ -33,6 +33,14 @@ class Urandom {
 		return $random_binary;
 	}
 
+	/** Generates a random base64 encoded string based off a /dev/urandom binary string.
+	 *  @param $stream_length Default is 4096 bytes. Longer binary streams produce longer, and thus more secure, base64 strings, but take longer to generate.
+	 *  @return string
+	 */
+	public function get_random_base64_string ( $stream_length = 4096 ) {
+		return base64_encode( $this->get_binary_stream( $stream_length ) );
+	}
+
 	/** Generates a random sha1 hash based off a /dev/urandom binary string.
 	 *  @param $stream_length Default is 4096 bytes. Longer binary streams have more possible sha1 values but take longer to generate.
 	 */
