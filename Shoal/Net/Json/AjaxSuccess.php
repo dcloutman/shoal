@@ -20,7 +20,7 @@ class AjaxSuccess extends AjaxResponse {
 	 *	@param mixed $data
 	 *  @return AjaxSuccess Returns a reference to the object. Supports a fluid interface.
 	 */
-	public function set_data ( $data ) {
+	public function setData ( $data ) {
 		$this->data = $data;
 
 		return $this;
@@ -33,10 +33,10 @@ class AjaxSuccess extends AjaxResponse {
 		$json_value = json_encode( $this );
 		if ( false === is_string($json_value) ) {
 			// __toString() cannot throw an exception, so this:
-			$conversion_error = new AjaxError();
-			$conversion_error->set_message( 'Could not convert AjaxSuccess instance to JSON encoded string. Data may not be correctly encoded.' );
+			$conversionError = new AjaxError();
+			$conversionError->setMessage( 'Could not convert AjaxSuccess instance to JSON encoded string. Data may not be correctly encoded.' );
 
-			$json_value = json_encode( $conversion_error );
+			$json_value = json_encode( $conversionError );
 		}
 		return $json_value;
 	}
