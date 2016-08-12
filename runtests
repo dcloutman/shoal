@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
+
+if [ -d ./tests ] && [ -x ./vendor/bin/phpunit ]; then
+    ./vendor/bin/phpunit ./tests
+else
+    echo "Could not resolve path to phpunit binary or tests directory."
+fi
