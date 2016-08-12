@@ -13,8 +13,11 @@
         >
 
     <testsuites>
-        <testsuite name="Shoal Test Suite">
+        <testsuite name="Shoal">
             <directory>./tests/</directory>
+        </testsuite>
+        <testsuite name="Shoal\Math">
+            <directory>./tests/Math/</directory>
         </testsuite>
     </testsuites>
 
