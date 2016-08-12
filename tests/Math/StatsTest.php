@@ -10,6 +10,8 @@ class StatsTest extends TestCase {
     public function testMedian () {
         $this->assertEquals(5, Stats::median([2, 8, 4, 6]));
         $this->assertEquals(6, Stats::median([2, 8, 4, 13, 6]));
+
+        $this->assertEquals(7, Stats::median($this->getTestInts()));
     }
 
     public function testStddev () {
