@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
-if [ -d ./tests ] && [ -x ./vendor/bin/phpunit ]; then
-    ./vendor/bin/phpunit ./tests
+CONFIG_FILE='./tests/phpunit.xml'
+
+if [ -d ./tests ] && [ -f $CONFIG_FILE ] && [ -x ./vendor/bin/phpunit ]; then
+    ./vendor/bin/phpunit --configuration=$CONFIG_FILE ./tests
 else
-    echo "Could not resolve path to phpunit binary or tests directory."
+    echo "Could not resolve path to phpunit binary, the configuration XML file (phpunit.xml), or the tests directory."
 fi
