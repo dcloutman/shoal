@@ -25,7 +25,7 @@ class F {
 	 *  @param array $array
 	 *  @param mixed $indexKey
 	 */
-	public static function reindexByMultiValue($array, $indexKey) {
+	public static function reindexByMultiValue(array $array, $indexKey) {
 		$result = [];
 		foreach ($array as $member) {
 			$result[$member[$indexKey]] = $member;
@@ -35,4 +35,5 @@ class F {
 	}
 
 }
+
 
