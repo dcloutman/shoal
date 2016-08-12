@@ -6,7 +6,7 @@ class Stats {
 	 *  @param array $num_set
 	 *  @return float
 	 */
-	public static function stddev ($num_set) {
+	public static function stddev (array $num_set) {
 		$variance = self::variance($num_set);
 
 		// Now return the square root of that average.
@@ -17,7 +17,7 @@ class Stats {
 	 *  @param array $num_set
 	 *  @return float
 	 */
-	public static function variance ($num_set) {
+	public static function variance (array $num_set) {
 		$mean = self::mean($num_set);
 
 		// For each number: subtract the mean and square the result.
@@ -34,7 +34,7 @@ class Stats {
 	 *  @param array $num_set
 	 *  @return float
 	 */
-	public static function mean ($num_set) {
+	public static function mean (array $num_set) {
 		$sum = array_sum($num_set);
 		$card = count($num_set);
 
@@ -42,8 +42,12 @@ class Stats {
 	}
 
 
-	public static function median ($num_set) {
-		$num_set = sort($num_set);
+	/** Compute the median of a numeric set.
+	 *  @param array $num_set
+	 *  @return float
+	 */
+	public static function median (array $num_set) {
+		sort($num_set); // Array is passed by reference in sort().
 
 		// Get the cardinality of the set.
 		$card = count($num_set);
@@ -51,18 +55,22 @@ class Stats {
 		// There are an even number of items in the set
 		if (0 == $card % 2) {
 			// Return the average of the two median values.
-			return $num_set[self::mean([ floor($card / 2), ceil($card / 2) ])];
+			return self::mean([
+				$num_set[floor(($card - 1) / 2)],
+				$num_set[ceil(($card - 1) / 2)],
+			]);
 		}
 
 		// Odd number of items in the set.
-		return $num_set[$card / 2];
-
+		return $num_set[floor(($card - 1)/ 2)];
 	}
 }
 
 /*
-$test_vals = [9, 2, 5, 4, 12, 7, 8, 11, 9, 3, 7, 4, 12, 5, 4, 10, 9, 6, 9, 4];
+$test_vals = [2, 4, 6, 8, 10, 14];
+//$test_vals = [9, 2, 5, 4, 12, 7, 8, 11, 9, 3, 7, 4, 12, 5, 4, 10, 9, 6, 9, 4];
 echo count($test_vals) . "\n";
-echo Stats::stddev($test_vals) . "\n";
 echo Stats::mean($test_vals) . "\n";
+echo Stats::median($test_vals) . "\n";
+echo Stats::stddev($test_vals) . "\n";
 */
