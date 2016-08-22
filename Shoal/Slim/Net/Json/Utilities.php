@@ -5,11 +5,11 @@ class Utilities {
 
 	/** Configure the Slim->response object for JSON content.
 	 *  @param \Slim\Slim $app An instance of the Slim application.
-	 *  @param integer $status_code A valid HTTP status code.
+	 *  @param integer $statusCode A valid HTTP status code.
 	 *  @
 	 */
-	public static function configure_json_response ( \Slim\Slim $app, $status_code, \Shoal\Net\Json\AjaxResponse $json ) {
-		$app->response->setStatus( $status_code );
+	public static function configureJsonResponse ( \Slim\Slim $app, $statusCode, \Shoal\Net\Json\AjaxResponse $json ) {
+		$app->response->setStatus( $statusCode );
 		$app->response->headers->set( 'Content-Type', 'application/json' );
 		$app->response->setBody( $json );
 	}
