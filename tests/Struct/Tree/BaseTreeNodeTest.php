@@ -103,10 +103,23 @@ class BaseTreeNodeTest extends TestCase {
         return $testTree;
     }
 
-    /**
-     *  @depends testGetChildrenChecksum
+    /** This test sets all values in $testTree to 1024. It is probably best to run this test last.
+     *  @depends testGetAncestors
      */
     public function testApplyFunctionToTree ($testTree) {
+
+        // Add 1 to all the numeric values in the tree.
+        $testTree->applyFunctionToTree(function ($node) {
+            $node->setValue(1024);
+        });
+
+        // Compare all the values to ensure that all were incremented.
+        $this->assertEquals($testTree->getValue(), 1024);
+        $this->assertEquals($testTree->getChildren()[0]->getValue(), 1024);
+        $this->assertEquals($testTree->getChildren()[1]->getValue(), 1024);
+        $this->assertEquals($testTree->getChildren()[2]->getValue(), 1024);
+        $this->assertEquals($testTree->getChildren()[0]->getChildren()[0]->getValue(), 1024);
+
         return $testTree;
     }
 }
