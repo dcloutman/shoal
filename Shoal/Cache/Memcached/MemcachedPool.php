@@ -1,5 +1,5 @@
 <?php
-namespace Shoal\Util;
+namespace Shoal\Cache\Memcached;
 
 /** Configuration of MemcachedFactory is done through defining a MemcachedPool class. The class below
  *  will be created by default if none exists. It can be used as a boilerplate for declaring a correct

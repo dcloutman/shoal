@@ -1,5 +1,5 @@
 <?php
-namespace Shoal\Util;
+namespace Shoal\Cache\Memcached;
 
 
 /** This class generates a Memcached (with a 'd') class for the configured server pool. It
