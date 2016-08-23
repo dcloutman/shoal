@@ -19,6 +19,9 @@
         <testsuite name="Shoal\Math">
             <directory>./tests/Math/</directory>
         </testsuite>
+        <testsuite name="Shoal\Struct\Tree">
+            <directory>./tests/Struct/Tree/</directory>
+        </testsuite>
     </testsuites>
 
 </phpunit>
