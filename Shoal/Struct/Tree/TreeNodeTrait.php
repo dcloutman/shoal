@@ -70,9 +70,8 @@ trait TreeNodeTrait {
 	protected function recurseAncestors(array $ancestors = []) {
 		if (null !== $this->parent) {
 			$ancestors[] = $this->parent;
-			$this->parent->recurseAncestors($ancestors);
+			$ancestors = $this->parent->recurseAncestors($ancestors);
 		}
-
 		return $ancestors;
 	}
 }
