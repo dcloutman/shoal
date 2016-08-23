@@ -16,54 +16,54 @@ class SessionFlash {
 	}
 
 	function __construct () {
-		if ( !$this->is_session_flash_set() ) {
-			$this->initialize_sesssion_flash();
+		if ( !$this->isSessionFlashSet() ) {
+			$this->initializeSesssionFlash();
 		}
 	}
 
-	public function add_error ( $message, $fields = [] ) {
+	public function addError ( $message, $fields = [] ) {
 		$_SESSION[self::$flashSessionPrefix . '.flash']['errors'][] = $message;
 		foreach ( $fields as $field ) {
 			$_SESSION[self::$flashSessionPrefix . '.flash']['error_fields'][] = $field;
 		}
 	}
 
-	public function add_warning ( $message ) {
+	public function addWarning ( $message ) {
 		$_SESSION[self::$flashSessionPrefix . '.flash']['warnings'][] = $message;
 	}
 
-	public function add_success ( $message ) {
+	public function addSuccess ( $message ) {
 		$_SESSION[self::$flashSessionPrefix . '.flash']['successes'][] = $message;
 	}
 
-	public function add_info ( $message ) {
+	public function addInfo ( $message ) {
 		$_SESSION[self::$flashSessionPrefix . '.flash']['info'][] = $message;
 	}
 
-	public function get_flash () {
+	public function getFlash () {
 		$return_value = $_SESSION[self::$flashSessionPrefix . '.flash']; //Makes a copy.
 		return $return_value;
 	}
 
-	public function get_and_clear_flash () {
+	public function getAndClearFlash () {
 		$return_value = false;
-		if ( $this->is_session_flash_set() ) {
-			$return_value = $this->get_flash();
+		if ( $this->isSessionFlashSet() ) {
+			$return_value = $this->getFlash();
 		}
 
-		$this->clear_flash();
+		$this->clearFlash();
 		return $return_value;
 	}
 
-	private function is_session_flash_set () {
+	private function isSessionFlashSet () {
 		return isset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
 
-	public function clear_flash () {
+	public function clearFlash () {
 		unset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
 
-	private function initialize_sesssion_flash () {
+	private function initializeSesssionFlash () {
 		$_SESSION[self::$flashSessionPrefix . '.flash'] = [
 			'errors' => [],
 			'error_fields' => [],
