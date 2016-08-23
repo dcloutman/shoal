@@ -8,9 +8,12 @@ CONFIG_FILE='./tests/phpunit.xml'
 if [ ! -d ./docs ]; then
     mkdir ./docs
     chmod 700 docs
+else
+    echo "/docs directory alredy exits. Try removing with \`rm -r docs\` and try again."
+    exit
 fi
 
 
 if [ -x ./vendor/bin/phpdoc ]; then
-    ./vendor/bin/phpdoc run -d ./Shoal -t docs
+    ./vendor/bin/phpdoc run -d ./Shoal -t ./docs --template="./vendor/phpdocumentor/phpdocumentor/data/templates/new-black"
 fi
