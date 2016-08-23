@@ -4,6 +4,16 @@ namespace Shoal\Util;
 /** Wraps flash routines that read and write into $_SESSION into an object.
  */
 class SessionFlash {
+	// A unique prefix for flash $_SESSION elements.
+	protected static  $flashSessionPrefix = 'shoal';
+
+	public static function setSessionFlashPrefix ($prefix) {
+		self::$flashSessionPrefix = $prefix;
+	}
+
+	public static function getSessionFlashPrefix () {
+		return self::$flashSessionPrefix;
+	}
 
 	function __construct () {
 		if ( !$this->is_session_flash_set() ) {
@@ -12,26 +22,26 @@ class SessionFlash {
 	}
 
 	public function add_error ( $message, $fields = [] ) {
-		$_SESSION['lampfire.flash']['errors'][] = $message;
+		$_SESSION[self::$flashSessionPrefix . '.flash']['errors'][] = $message;
 		foreach ( $fields as $field ) {
-			$_SESSION['lampfire.flash']['error_fields'][] = $field;
+			$_SESSION[self::$flashSessionPrefix . '.flash']['error_fields'][] = $field;
 		}
 	}
 
 	public function add_warning ( $message ) {
-		$_SESSION['lampfire.flash']['warnings'][] = $message;
+		$_SESSION[self::$flashSessionPrefix . '.flash']['warnings'][] = $message;
 	}
 
 	public function add_success ( $message ) {
-		$_SESSION['lampfire.flash']['successes'][] = $message;
+		$_SESSION[self::$flashSessionPrefix . '.flash']['successes'][] = $message;
 	}
 
 	public function add_info ( $message ) {
-		$_SESSION['lampfire.flash']['info'][] = $message;
+		$_SESSION[self::$flashSessionPrefix . '.flash']['info'][] = $message;
 	}
 
 	public function get_flash () {
-		$return_value = $_SESSION['lampfire.flash']; //Makes a copy.
+		$return_value = $_SESSION[self::$flashSessionPrefix . '.flash']; //Makes a copy.
 		return $return_value;
 	}
 
@@ -46,15 +56,15 @@ class SessionFlash {
 	}
 
 	private function is_session_flash_set () {
-		return isset( $_SESSION['lampfire.flash'] );
+		return isset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
 
 	public function clear_flash () {
-		unset( $_SESSION['lampfire.flash'] );
+		unset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
 
 	private function initialize_sesssion_flash () {
-		$_SESSION['lampfire.flash'] = [
+		$_SESSION[self::$flashSessionPrefix . '.flash'] = [
 			'errors' => [],
 			'error_fields' => [],
 			'warnings' => [],
