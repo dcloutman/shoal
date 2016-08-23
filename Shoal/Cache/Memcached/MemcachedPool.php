@@ -1,16 +1,26 @@
 <?php
 namespace Shoal\Cache\Memcached;
 
-/** Configuration of MemcachedFactory is done through defining a MemcachedPool class. The class below
- *  will be created by default if none exists. It can be used as a boilerplate for declaring a correct
- *  configuration for an environment.
+/** Configuration of MemcachedFactory is done through the MemcachedPool class. For development purposes, a single call to
+ *  MemcachedPool::addServer() with no parameters is sufficient. Multiple calls will build out the pool. These calls should 
+ *  generally be made in the configuration or bootstrapping section of the application prior to the first call of
+ *  MemcachedFactory::getMemcached().
  */
-if ( !class_exists( 'MemcachedPool' ) ) {
-	class MemcachedPool {
-		public static $servers = array (
-			// 'I.P. Address', Port, Weight
-			array( '127.0.0.1', 11211, 100 ) // Defaults to localhost.
-		);
+class MemcachedPool {
+	protected static $servers = [];
+
+	public static function addServer($host = '127.0.0.1', $port = 11211, $weight = 100) {
+		// 'I.P. Address', Port, Weight
+		self::$servers[] = [$host, $port, $weight];
+	}
+
+
+	public static function getServers () {
+		return self::$servers;
+	}
+
+	public static function resetServers () {
+		self::$servers = [];
 	}
 }
 

@@ -21,21 +21,21 @@ class MemcachedFactory {
 	const CACHE_WEEK = 604800;
 
 
-	private static $memcached_instance = null;
+	private static $memcachedInstance = null;
 
 	private function __construct () {}
 
 	/** Returns a single instance of Memcached using the servers configured in MemcachedPool.
 	 *  @return Memcached
 	 */
-	public static function get_memcached () {
-		if ( null === self::$memcached_instance ) {
-			self::$memcached_instance = new Memcached();
-			if (  0 == count ( self::$memcached_instance->getServerList() ) ) {
-				self::$memcached_instance->addServers( MemcachedPool::$servers );
+	public static function getMemcached () {
+		if ( null === self::$memcachedInstance ) {
+			self::$memcachedInstance = new Memcached();
+			if (  0 == count ( self::$memcachedInstance->getServerList() ) ) {
+				self::$memcachedInstance->addServers( MemcachedPool::getServers() );
 			}
 		}
-		return self::$memcached_instance;
+		return self::$memcachedInstance;
 	}
 }
 
