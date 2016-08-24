@@ -3,12 +3,12 @@ use PHPUnit\Framework\TestCase;
 use Shoal\Struct\Tree;
 
 class BaseTreeNodeTest extends TestCase {
-    
+
     /**
      */
     public function testConstruct () {
-        $testTree = new IntTreeNode(42);
-
+        $testTree = new IntTreeNode();
+        $testTree->setValue(42);
         $this->assertEquals(42, $testTree->getValue());
 
         return $testTree;
@@ -28,8 +28,10 @@ class BaseTreeNodeTest extends TestCase {
      *  @depends testGetChildren
      */
     public function testAddChild ($testTree) {
-        for ($i = 1; $i < 4; $i++) { 
-            $testTree->addChild(new IntTreeNode($i));           
+        for ($i = 1; $i < 4; $i++) {
+            $child = new IntTreeNode();
+            $child->setValue($i);
+            $testTree->addChild($child);
         }
 
         $this->assertEquals(3, count($testTree->getChildren()));
@@ -85,7 +87,8 @@ class BaseTreeNodeTest extends TestCase {
         // The root of the tree should have no ancestors.
         //$this->assertEmpty($testTree->getAncestors());
 
-        $newNode = new IntTreeNode(16);
+        $newNode = new IntTreeNode();
+        $newNode->setValue(16);
         $this->assertEmpty($newNode->getParent());
 
         $children = $testTree->getChildren();
@@ -131,12 +134,12 @@ class BaseTreeNodeTest extends TestCase {
 class IntTreeNode extends \Shoal\Struct\Tree\BaseTreeNode {
     protected $num = 0;
 
-    function __construct($num = 0) {
-        $this->setValue($num);
+    function __construct(\Shoal\Struct\Tree\TreeNode $parent = null) {
+        parent::__construct($parent);
     }
 
     public function setValue ($value) {
-        $this->num = $value;        
+        $this->num = $value;
     }
 
     public function getValue () {
