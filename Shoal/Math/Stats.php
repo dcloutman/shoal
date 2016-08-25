@@ -1,6 +1,9 @@
 <?php
 namespace Shoal\Math;
 
+/**
+ * A collection of static methods for common statistical computations.
+ */
 class Stats {
 	/** Computes the standard deviation of an array of numbers.
 	 *  @param array $numSet
