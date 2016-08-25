@@ -1,6 +1,9 @@
 <?php
 namespace Shoal\Slim\Net\Json;
 
+/**
+ * Static method userful for using JSON in a Slim application.
+ */
 class Utilities {
 
 	/** Configure the Slim->response object for JSON content.
