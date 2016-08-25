@@ -6,7 +6,7 @@ cd $DIR
 CONFIG_FILE='./tests/phpunit.xml'
 
 if [ -d ./tests ] && [ -f $CONFIG_FILE ] && [ -x ./vendor/bin/phpunit ]; then
-    ./vendor/bin/phpunit --verbose --testdox --configuration=$CONFIG_FILE ./tests
+    ./vendor/bin/phpunit --verbose  --configuration=$CONFIG_FILE ./tests
 else
     echo "Could not resolve path to phpunit binary, the configuration XML file (phpunit.xml), or the tests directory."
 fi
