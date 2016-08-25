@@ -16,7 +16,10 @@
         <testsuite name="Shoal">
             <directory>./tests/</directory>
         </testsuite>
-        <testsuite name="Shoal\Math">
+        <testsuite name="Shoal\Cache\Memcached">
+            <directory>./tests/Struct/Tree/</directory>
+        </testsuite>
+         <testsuite name="Shoal\Math">
             <directory>./tests/Math/</directory>
         </testsuite>
         <testsuite name="Shoal\Struct\Tree">
