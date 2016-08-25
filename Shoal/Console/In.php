@@ -21,7 +21,7 @@ class In {
 		$text = trim(fgets($this->in, $this->max_len));
 
 		$this->last_input = $text;
-	return $this->last_input;
+		return $this->last_input;
 	}
 
 	public function __toString() {
