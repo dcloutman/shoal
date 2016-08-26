@@ -1,13 +1,22 @@
 <?php
+/**
+ * \Shoal\Math\Stats
+ * @author David Cloutman
+ * @package \Shoal\Math
+ * @license MIT
+ */
+
 namespace Shoal\Math;
+
 
 /**
  * A collection of static methods for common statistical computations.
  */
 class Stats {
-	/** Computes the standard deviation of an array of numbers.
-	 *  @param array $numSet
-	 *  @return float
+	/**
+	 * Computes the standard deviation of an array of numbers.
+	 * @param array $numSet An array of numeric values representing a set.
+	 * @return float
 	 */
 	public static function stddev (array $numSet) {
 		$variance = self::variance($numSet);
@@ -16,9 +25,10 @@ class Stats {
 		return pow($variance, .5);
 	}
 
-	/** Compute the varience of a numeric set. This method is used to compute standard deviation.
-	 *  @param array $numSet
-	 *  @return float
+	/**
+	 * Compute the varience of a numeric set. This method is used to compute standard deviation.
+	 * @param array $numSet An array of numeric values representing a set.
+	 * @return float
 	 */
 	public static function variance (array $numSet) {
 		$mean = self::mean($numSet);
@@ -33,9 +43,10 @@ class Stats {
 		return self::mean($squaredDiffs);
 	}
 
-	/** Compute the mean of a numeric set.
-	 *  @param array $numSet
-	 *  @return float
+	/**
+	 * Compute the mean of a numeric set.
+	 * @param array $numSet An array of numeric values representing a set.
+	 * @return float
 	 */
 	public static function mean (array $numSet) {
 		$sum = array_sum($numSet);
@@ -45,9 +56,10 @@ class Stats {
 	}
 
 
-	/** Compute the median of a numeric set.
-	 *  @param array $numSet
-	 *  @return float
+	/**
+	 * Compute the median of a numeric set.
+	 * @param array $numSet An array of numeric values representing a set.
+	 * @return float
 	 */
 	public static function median (array $numSet) {
 		sort($numSet); // Array is passed by reference in sort().
