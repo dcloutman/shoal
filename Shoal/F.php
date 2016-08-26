@@ -30,9 +30,10 @@ class F {
 	}
 
 
-	/** Takes an array of arrays that share a common key with a presumed unique value and returns a new array of arrays indexed by that value.
-	 *  @param array $arr
-	 *  @param mixed $indexKey
+	/**
+	 * Takes an array of arrays that share a common key with a presumed unique value and returns a new array of arrays indexed by that value.
+	 * @param array $arr
+	 * @param mixed $indexKey
 	 */
 	public static function reindexByMultiValue(array $arr, $indexKey) {
 		$result = [];
