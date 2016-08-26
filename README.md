@@ -5,10 +5,10 @@ It may be used in anyone's projects for any purpose. They are presented in the h
 ## Release Notes
 
 ### v0.3.0
-This version had two primary goals.
+This version had the following primary goals.
 
-- Create unit test coverage for the majority of classes.
-- Convert method names and variables to camel case to better match PSR standards.
-
+- Create unit test coverage for the majority of classes
+- Convert method names and variables to camel case to better match PSR standards
+- Bring comments into conformity with the PHPDoc standard so that API documentation could be generated
 In the process of developing unit tests, bugs were found and (hopefully) fixed.
 
