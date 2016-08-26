@@ -1,14 +1,29 @@
 <?php
+/**
+ * \Shoal\Ui\Option
+ * @author David Cloutman
+ * @package \Shoal\Ui
+ * @license MIT
+ */
+
 namespace Shoal\Ui;
 
+/**
+ * A UI class implementing the <option /> element.
+ */
 class Option extends Element implements HasClosingTag {
 	use ContentTrait;
-
+	
+	/**
+	 * @var string $value
+	 * @internal
+	 */
 	protected $value = '';
 
-	/** Combined getter / setter for $this->value
-	 *  @param string value
-	 *  @return mixed A string if a value for value is not passed, the current instance of the object if it is.
+	/**
+	 * Combined getter / setter for $this->value
+	 * @param string value
+	 * @return mixed A string if a value for value is not passed, the current instance of the object if it is.
 	 */
 	public function value ( $value = null ) {
 		if ( null !== $value ) {
@@ -18,12 +33,17 @@ class Option extends Element implements HasClosingTag {
 		return $this->value;
 	}
 
-
+	
+	/**
+	 * @var string $selected
+	 * @internal
+	 */
 	protected $selected = '';
 
-	/** Combined getter / setter for $this->selected
-	 *  @param mixed|boolean Any truthy value selects the option. Any falsey value unselects it.
-	 *  @return boolean If a value for $selected is not passed, returns true if the option is selected, false if it is not. If no value for $selected is passed, returns the current instance of the object.
+	/**
+	 * Combined getter / setter for $this->selected
+	 * @param mixed|boolean Any truthy value selects the option. Any falsey value unselects it.
+	 * @return boolean If a value for $selected is not passed, returns true if the option is selected, false if it is not. If no value for $selected is passed, returns the current instance of the object.
 	 */
 	public function selected ( $selected = null ) {
 		if ( $selected !== null ) {
@@ -34,6 +54,9 @@ class Option extends Element implements HasClosingTag {
 	}
 
 
+	/**
+	 * Create an Object object.
+	 */
 	function __construct() {
 		parent::__construct();
 
@@ -41,6 +64,10 @@ class Option extends Element implements HasClosingTag {
 	}
 
 
+	/** 
+	 * Get HTML fragment.
+	 * @return string
+	 */
 	public function __toString() {
 		$string_value = "<{$this->element_name} "; 
 

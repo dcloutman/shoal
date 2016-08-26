@@ -1,10 +1,22 @@
 <?php
+/**
+ * \Shoal\Ui\RadioInput
+ * @author David Cloutman
+ * @package \Shoal\Ui
+ * @license MIT
+ */
+
 namespace Shoal\Ui;
 
-/** A UI class for implementing radio buttons.
+/**
+ * A UI class for implementing radio buttons.
  */
 class RadioInput extends CheckableInput {
 
+	/** 
+	 * Get HTML fragment.
+	 * @return string
+	 */
 	public function __toString () {
 		$string_value = "<{$this->element_name} ";
 
@@ -45,6 +57,9 @@ class RadioInput extends CheckableInput {
 		return $string_value;
 	}
 
+	/**
+	 * Create a RadioInput object.
+	 */
 	function __construct() {
 		$this->type = 'radio';
 

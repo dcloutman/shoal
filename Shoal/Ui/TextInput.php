@@ -1,13 +1,28 @@
 <?php
+/**
+ * \Shoal\Ui\TextInput
+ * @author David Cloutman
+ * @package \Shoal\Ui
+ * @license MIT
+ */
+
 namespace Shoal\Ui;
 
+/**
+ * A UI class implementing the text input.
+ */
 class TextInput extends Input {
 
+	/**
+	 * @var string $size
+	 * @internal
+	 */
 	protected $size = '';
 
-	/** Combined getter / setter for $this->size
-	 *  @param string size
-	 *  @return mixed A string if a value for size is not passed, the current instance of the object if it is.
+	/** 
+	 * Combined getter / setter for $this->size
+	 * @param string $size
+	 * @return mixed A string if a value for size is not passed, the current instance of the object if it is.
 	 */
 	public function size ( $size = null ) {
 		if ( null !== $size ) {
@@ -18,11 +33,16 @@ class TextInput extends Input {
 	}
 
 
+	/** 
+	 * @var string $maxlength
+	 * @internal
+	 */
 	protected $maxlength = '';
 
-	/** Combined getter / setter for $this->maxlength
-	 *  @param string maxlength
-	 *  @return mixed A string if a value for maxlength is not passed, the current instance of the object if it is.
+	/** 
+	 * Combined getter / setter for $this->maxlength
+	 * @param string $maxlength
+	 * @return mixed A string if a value for maxlength is not passed, the current instance of the object if it is.
 	 */
 	public function maxlength ( $maxlength = null ) {
 		if ( null !== $maxlength ) {
@@ -33,6 +53,9 @@ class TextInput extends Input {
 	}
 
 	
+	/**
+	 * Create a TextInput object.
+	 */
 	function __construct() {
 		parent::__construct();
 
@@ -40,6 +63,10 @@ class TextInput extends Input {
 	}
 
 
+	/** 
+	 * Get HTML fragment.
+	 * @return string
+	 */
 	public function __toString () {
 		$string_value = "<{$this->element_name} "; 
 

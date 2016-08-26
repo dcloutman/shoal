@@ -1,10 +1,21 @@
 <?php
+/**
+ * \Shoal\Ui\CheckableInput
+ * @author David Cloutman
+ * @package \Shoal\Ui
+ * @license MIT
+ */
+
 namespace Shoal\Ui;
 
 /** A UI class for implementing checkboxes.
  */
 class CheckboxInput extends CheckableInput {
 
+	/** 
+	 * Get HTML fragment.
+	 * @return string
+	 */
 	public function __toString () {
 		$string_value = "<{$this->element_name} "; 
 
@@ -45,6 +56,9 @@ class CheckboxInput extends CheckableInput {
 		return $string_value;
 	}
 
+	/**
+	 * Create a Checkbox object.
+	 */
 	function __construct() {
 		$this->type = 'checkbox';
 

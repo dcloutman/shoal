@@ -1,12 +1,28 @@
 <?php
+/**
+ * \Shoal\Ui\FileInput
+ * @author David Cloutman
+ * @package \Shoal\Ui
+ * @license MIT
+ */
+
 namespace Shoal\Ui;
+
+/**
+ * A UI class for implementing checkboxes.
+ */
 class FileInput extends Input {
 
+	/**
+	 * @var string $accept
+	 * @internal
+	 */
 	protected $accept;
 
-	/** Combined getter / setter for $this->accept, which specifies which file mime types are acceptable.
-	 *  @param string accept
-	 *  @return mixed A string if a value for accept is not passed, the current instance of the object if it is.
+	/**
+	 * Combined getter / setter for $this->accept, which specifies which file mime types are acceptable.
+	 * @param string $accept
+	 * @return mixed A string if a value for accept is not passed, the current instance of the object if it is.
 	 */
 	public function accept ( $accept = null ) {
 		if ( null !== $accept ) {
@@ -16,6 +32,9 @@ class FileInput extends Input {
 		return $this->accept;
 	}
 
+	/**
+	 * Create a FileInput object.
+	 */
 	function __construct() {
 		parent::__construct();
 
@@ -23,6 +42,10 @@ class FileInput extends Input {
 	}
 
 
+	/** 
+	 * Get HTML fragment.
+	 * @return string
+	 */
 	public function __toString () {
 		$string_value = "<{$this->element_name} ";
 

@@ -1,14 +1,29 @@
 <?php
+/**
+ * \Shoal\Ui\TextArea
+ * @author David Cloutman
+ * @package \Shoal\Ui
+ * @license MIT
+ */
+
 namespace Shoal\Ui;
 
+/**
+ * A UI class for implementing textarea form fields.
+ */
 class TextArea extends Input implements HasClosingTag {
 	use ContentTrait;
 
+	/**
+	 * @var string $placeholder
+	 * @internal
+	 */
 	protected $placeholder = '';
 
-	/** Combined getter / setter for $this->placeholder
-	 *  @param string placeholder
-	 *  @return mixed A string if a value for placeholder is not passed, the current instance of the object if it is.
+	/** 
+	 * Combined getter / setter for $this->placeholder
+	 * @param string placeholder
+	 * @return mixed A string if a value for placeholder is not passed, the current instance of the object if it is.
 	 */
 	public function placeholder ( $placeholder = null ) {
 		if ( null !== $placeholder ) {
@@ -19,11 +34,16 @@ class TextArea extends Input implements HasClosingTag {
 	}
 
 
+	/**
+	 * @var string $cols
+	 * @internal
+	 */
 	protected $cols = '';
 
-	/** Combined getter / setter for $this->cols
-	 *  @param string cols
-	 *  @return mixed A string if a value for cols is not passed, the current instance of the object if it is.
+	/** 
+	 * Combined getter / setter for $this->cols
+	 * @param string cols
+	 * @return mixed A string if a value for cols is not passed, the current instance of the object if it is.
 	 */
 	public function cols ( $cols = null ) {
 		if ( null !== $cols ) {
@@ -34,11 +54,16 @@ class TextArea extends Input implements HasClosingTag {
 	}
 
 
+	/**
+	 * @var string $rows
+	 * @internal
+	 */
 	protected $rows = '';
 
-	/** Combined getter / setter for $this->rows
-	 *  @param string rows
-	 *  @return mixed A string if a value for rows is not passed, the current instance of the object if it is.
+	/** 
+	 * Combined getter / setter for $this->rows
+	 * @param string rows
+	 * @return mixed A string if a value for rows is not passed, the current instance of the object if it is.
 	 */
 	public function rows ( $rows = null ) {
 		if ( null !== $rows ) {
@@ -49,11 +74,16 @@ class TextArea extends Input implements HasClosingTag {
 	}
 
 
+	/**
+	 * @var string $maxlength
+	 * @internal
+	 */
 	protected $maxlength = '';
 
-	/** Combined getter / setter for $this->maxlength
-	 *  @param string maxlength
-	 *  @return mixed A string if a value for maxlength is not passed, the current instance of the object if it is.
+	/** 
+	 * Combined getter / setter for $this->maxlength
+	 * @param string $maxlength
+	 * @return mixed A string if a value for maxlength is not passed, the current instance of the object if it is.
 	 */
 	public function maxlength ( $maxlength = null ) {
 		if ( null !== $maxlength ) {
@@ -64,6 +94,9 @@ class TextArea extends Input implements HasClosingTag {
 	}
 
 
+	/**
+	 * Create a TextArea object.
+	 */
 	function __construct() {
 		parent::__construct();
 
@@ -71,6 +104,10 @@ class TextArea extends Input implements HasClosingTag {
 	}
 
 
+	/** 
+	 * Get HTML fragment.
+	 * @return string
+	 */
 	public function __toString() {
 		$string_value = "<{$this->element_name} "; 
 

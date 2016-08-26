@@ -1,12 +1,27 @@
 <?php
+/**
+ * \Shoal\Ui\Select
+ * @author David Cloutman
+ * @package \Shoal\Ui
+ * @license MIT
+ */
+
 namespace Shoal\Ui;
 
+/**
+ * A UI class implementing the <select /> element.
+ */
 class Select extends Element implements HasClosingTag {
+	/**
+	 * @var string $content
+	 * @internal
+	 */
 	protected $content = '';
 
-	/** Combined getter / setter for $this->content. IMPORTANT NOTE: Use of add_object() is recommended over this method for adding option tags to a <select /> input.
-	 *  @param string content
-	 *  @return mixed A string if a value for content is not passed, the current instance of the object if it is.
+	/**
+	 * Combined getter / setter for $this->content. IMPORTANT NOTE: Use of add_object() is recommended over this method for adding option tags to a <select /> input.
+	 * @param string content
+	 * @return mixed A string if a value for content is not passed, the current instance of the object if it is.
 	 */
 	public function content ( $content = null ) {
 		if ( null !== $content ) {
@@ -16,9 +31,10 @@ class Select extends Element implements HasClosingTag {
 		return $this->content;
 	}
 
-	/** Add an option to the Select control.
-	 *  @param Option $option An Option object to add to the Select control.
-	 *  @param Select A reference to the instance of this object.
+	/**
+	 * Add an option to the Select control.
+	 * @param Option $option An Option object to add to the Select control.
+	 * @param Select A reference to the instance of this object.
 	 */
 	public function add_option( Option $option ) {
 		$this->content .= (string) $option;
@@ -26,11 +42,12 @@ class Select extends Element implements HasClosingTag {
 		return $this;
 	}
 
-	/** This method adds options from an array based off of $key => $value pairs. Array keys become the value of the @value attibute and array values are assigned to the content of the option. $select_value should be set to the value of the $key that you wish to have selected as the value of the control.
-	 *	@param array $data_array $key => $value pairs that repectively become @value attribute values and content of the created <option /> tags.
-	 *	@param mixed $select_value The value of the $key that should be tagged as selected.
-	 *  @return Select A reference to the instance of this object.
-	 *  @todo Add support for multiple select boxes.
+	/**
+	 * This method adds options from an array based off of $key => $value pairs. Array keys become the value of the @value attibute and array values are assigned to the content of the option. $select_value should be set to the value of the $key that you wish to have selected as the value of the control.
+	 * @param array $data_array $key => $value pairs that repectively become @value attribute values and content of the created <option /> tags.
+	 * @param mixed $select_value The value of the $key that should be tagged as selected.
+	 * @return Select A reference to the instance of this object.
+	 * @todo Add support for multiple select boxes.
 	 */
 	public function add_options_from_array ( $data_array, $select_value = null ) {
 		foreach ( $data_array as $option_value => $option_content ) {
@@ -47,11 +64,16 @@ class Select extends Element implements HasClosingTag {
 		return $this;
 	}
 
+	/**
+	 * @var string $class
+	 * @internal
+	 */
 	protected $multiple = '';
 
-	/** Combined getter / setter for $this->multiple
-	 *  @param mixed|boolean Any truthy value selects the option. Any falsey value unselects it.
-	 *  @return boolean If a value for $multiple is not passed, returns true if the option is multiple, false if it is not. If no value for $multiple is passed, returns the current instance of the object.
+	/**
+	 * Combined getter / setter for $this->multiple
+	 * @param mixed|boolean Any truthy value selects the option. Any falsey value unselects it.
+	 * @return boolean If a value for $multiple is not passed, returns true if the option is multiple, false if it is not. If no value for $multiple is passed, returns the current instance of the object.
 	 */
 	public function multiple ( $multiple = true ) {
 		$this->multiple = $multiple ? 'multiple' : '';
@@ -60,12 +82,19 @@ class Select extends Element implements HasClosingTag {
 	}
 
 
+	/**
+	 * Create a select object.
+	 */
 	function __construct() {
 		parent::__construct();
 
 		$this->element_name = 'select';
 	}
 
+	/** 
+	 * Get HTML fragment.
+	 * @return string
+	 */
 	public function __toString() {
 		$string_value = "<{$this->element_name} "; 
 
