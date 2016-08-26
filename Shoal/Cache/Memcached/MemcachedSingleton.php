@@ -97,8 +97,15 @@ class MemcachedSingleton {
 
 	/**
 	 * No, you may not instantiate this class.
+	 * @internal
 	 */
 	private function __construct () {}
+
+	/**
+	 * You may not clone a singleton.
+	 * @internal
+	 */
+	private function __clone () {}
 
 	/**
 	 * Returns a single instance of Memcached using the servers configured in MemcachedPool.
