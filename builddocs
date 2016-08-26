@@ -9,8 +9,13 @@ if [ ! -d ./docs ]; then
     mkdir ./docs
     chmod 700 docs
 else
-    echo "/docs directory alredy exits. Try removing with \`rm -r docs\` and try again."
-    exit
+    echo "/docs directory alredy exits. Attempting to reemove with \`rm -r ./docs\`."
+    rm -r ./docs
+
+    if [ -d ./docs ]; then
+        echo "Could not remove old docs directory. New documentation was not built. Please try removing old documentation manually. Exiting."
+        exit
+    fi
 fi
 
 
