@@ -15,7 +15,16 @@ namespace Shoal\Struct\Tree;
  *  @see TreeNode
  */
 trait TreeNodeTrait {
+	/**
+	 * @var \Shoal\Struct\TreeNode $parent
+	 * @internal
+	 */
 	protected $parent = null;
+
+	/**
+	 * @var array $children
+	 * @internal
+	 */
 	protected $children = [];
 
 	/**

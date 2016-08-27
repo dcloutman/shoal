@@ -1,11 +1,23 @@
 <?php
+/**
+ * \Shoal\Util\SessionFlash
+ * "Flash" messages are messages that are meant to be displayed to a user after an operation, usually writable, has occured. These can 
+ * be errors, warnings, success confirmatios, or informational messages.
+ * @author David Cloutman
+ * @package \Shoal\Util
+ * @license MIT
+ */
+
 namespace Shoal\Util;
 
 /** Wraps flash routines that read and write into $_SESSION into an object.
  */
 class SessionFlash {
-	// A unique prefix for flash $_SESSION elements.
+	/**
+	 * @var $flashSessionPrefix A unique prefix for flash $_SESSION elements.
+	 */
 	protected static  $flashSessionPrefix = 'shoal';
+
 
 	public static function setSessionFlashPrefix ($prefix) {
 		self::$flashSessionPrefix = $prefix;
@@ -15,12 +27,20 @@ class SessionFlash {
 		return self::$flashSessionPrefix;
 	}
 
+	/**
+	 * Create a SessionFlash object.
+	 */
 	function __construct () {
 		if ( !$this->isSessionFlashSet() ) {
 			$this->initializeSesssionFlash();
 		}
 	}
 
+	/**
+	 * Add an error to the array of flash errors stored in the session.
+	 * @param string $message An error message to display to users.
+	 * @param array $fields Appends the error_fields array stored in the session with the names of fields the application has flagged as invalid.
+	 */
 	public function addError ( $message, $fields = [] ) {
 		$_SESSION[self::$flashSessionPrefix . '.flash']['errors'][] = $message;
 		foreach ( $fields as $field ) {
@@ -28,23 +48,42 @@ class SessionFlash {
 		}
 	}
 
+	/**
+	 * Add an error to the array of flash errors stored in the session.
+	 * @param string $message A warning message to display to users.
+	 */
 	public function addWarning ( $message ) {
 		$_SESSION[self::$flashSessionPrefix . '.flash']['warnings'][] = $message;
 	}
 
+	/**
+	 * Add an error to the array of flash errors stored in the session.
+	 * @param string $message A success message to display to users.
+	 */
 	public function addSuccess ( $message ) {
 		$_SESSION[self::$flashSessionPrefix . '.flash']['successes'][] = $message;
 	}
 
+	/**
+	 * Add an information message to the array of flash information messages stored in the session.
+	 * @param string $message An informational message to display to users.
+	 */
 	public function addInfo ( $message ) {
 		$_SESSION[self::$flashSessionPrefix . '.flash']['info'][] = $message;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getFlash () {
 		$return_value = $_SESSION[self::$flashSessionPrefix . '.flash']; //Makes a copy.
 		return $return_value;
 	}
 
+	/**
+	 * This method wraps calls to the getFlash() and clearFlash() methods.
+	 * @return array
+	 */
 	public function getAndClearFlash () {
 		$return_value = false;
 		if ( $this->isSessionFlashSet() ) {
@@ -55,10 +94,18 @@ class SessionFlash {
 		return $return_value;
 	}
 
+	/**
+	 * Has the flash data structure been instantiated in $_SESSION?
+	 * @internal
+	 * @return boolean
+	 */
 	private function isSessionFlashSet () {
 		return isset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
 
+	/**
+	 * Remove flash information from the session. This should be called immediately after flash messages are displayed.
+	 */
 	public function clearFlash () {
 		unset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
