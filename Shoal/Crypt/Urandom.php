@@ -1,12 +1,12 @@
 <?php
 /**
- * \Shoal\Util\Urandom
+ * \Shoal\Crypt\Urandom
  * @author David Cloutman
- * @package \Shoal\Util
+ * @package \Shoal\Crypt
  * @license MIT
  */
 
-namespace Shoal\Util;
+namespace Shoal\Crypt;
 
 /**
  * This is a singleton class that generates random values from a filestream from /dev/urandom. These values

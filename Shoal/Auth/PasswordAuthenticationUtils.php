@@ -45,7 +45,7 @@ class PasswordAuthenticationUtils {
 	 * @return string A base64 encoded random binary stream.
 	 */
 	static public function generate_salt ($stream_length = 4096) {
-		$urandom = \Shoal\Util\Urandom::get_instance();
+		$urandom = \Shoal\Crypt\Urandom::get_instance();
 		return $urandom->get_random_base64_string($stream_length);
 	}
 }
