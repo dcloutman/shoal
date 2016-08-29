@@ -18,11 +18,18 @@ class SessionFlash {
 	 */
 	protected static  $flashSessionPrefix = 'shoal';
 
-
+	/**
+	 * By default, flash data is stored in $_SESSION['shoal.flash']. This method will change 'shoal', the prefix, to the value passed to $prefix.
+	 * @param string $prefix
+	 */
 	public static function setSessionFlashPrefix ($prefix) {
 		self::$flashSessionPrefix = $prefix;
 	}
 
+	/**
+	 * By default, flash data is stored in $_SESSION['shoal.flash']. This method will change 'shoal', the prefix, to the value passed to $prefix.
+	 * @return string
+	 */
 	public static function getSessionFlashPrefix () {
 		return self::$flashSessionPrefix;
 	}
