@@ -95,6 +95,31 @@ abstract class Element {
 		return $this->name;
 	}
 
+	/**
+	 * Returns a string of attibutes. Can be called by inheriting classes' __toString() method for consistent behavior.
+	 * @return string A string of attributes for use in an opening or self closing HTML tag.
+	 */
+	public function getAttributeString () {
+		$attributeString = '';
+
+		if ( !empty( $this->name ) ) {
+			$attributeString .= "name=\"{$this->name}\" ";
+		}
+
+		if ( !empty( $this->id ) ) {
+			$attributeString .= "id=\"{$this->id}\" ";
+		}
+
+		if ( !empty( $this->class ) ) {
+			$attributeString .= "class=\"{$this->class}\" ";
+		}
+
+		if ( !empty( $this->style ) ) {
+			$attributeString .= "style=\"{$this->style}\" ";
+		}
+
+		return $attributeString;
+	}
 
 	/**
 	 * A parent constructor to be called by all subclasses of Element.
