@@ -63,27 +63,37 @@ class TextInput extends Input {
 	}
 
 
-	/** 
+	/**
+	 * Returns a string of attibutes. Can be called by inheriting classes for consistent behavior.
+	 * @return string A string of attributes for use in an opening or self closing HTML tag.
+	 */
+	public function getAttributeString () {
+		$attributeString = '';
+
+		$attributeString .= parent::getAttributeString();
+
+		if ( !empty( $this->placeholder ) ) {
+			$attributeString .= "placeholder=\"{$this->placeholder}\" ";
+		}
+
+		if ( !empty( $this->maxlength ) ) {
+			$attributeString .= "maxlength=\"{$this->maxlength}\" ";
+		}
+
+		if ( !empty( $this->size ) ) {
+			$attributeString .= "size=\"{$this->size}\" ";
+		}
+
+		return $attributeString;
+	}
+
+	/**
 	 * Get HTML fragment.
 	 * @return string
 	 */
 	public function __toString () {
-		$string_value = "<{$this->element_name} "; 
-
-		$string_value .= parent::getAttributeString();
-
-		if ( !empty( $this->placeholder ) ) {
-			$string_value .= "placeholder=\"{$this->placeholder}\" ";
-		}
-
-		if ( !empty( $this->maxlength ) ) {
-			$string_value .= "maxlength=\"{$this->maxlength}\" ";
-		}
-
-		if ( !empty( $this->size ) ) {
-			$string_value .= "size=\"{$this->size}\" ";
-		}
-
+		$string_value = "<{$this->element_name} ";
+		$string_value .= $this->getAttributeString();
 		$string_value .= '/>';
 
 		return $string_value;
