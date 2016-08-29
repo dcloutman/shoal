@@ -27,10 +27,6 @@ class CheckboxInput extends CheckableInput {
 			$string_value .= "id=\"{$this->id}\" ";
 		}
 
-		if ( !empty( $this->type ) ) {
-			$string_value .= "type=\"{$this->type}\" ";
-		}
-
 		if ( !empty( $this->class ) ) {
 			$string_value .= "class=\"{$this->class}\" ";
 		}
@@ -41,6 +37,10 @@ class CheckboxInput extends CheckableInput {
 
 		if ( !empty( $this->size ) ) {
 			$string_value .= "size=\"{$this->size}\" ";
+		}
+
+		if ( !empty( $this->type ) ) {
+			$string_value .= "type=\"{$this->type}\" ";
 		}
 
 		if ( !empty( $this->value ) ) {
