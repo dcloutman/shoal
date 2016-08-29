@@ -70,25 +70,7 @@ class TextInput extends Input {
 	public function __toString () {
 		$string_value = "<{$this->element_name} "; 
 
-		if ( !empty( $this->name ) ) {
-			$string_value .= "name=\"{$this->name}\" ";
-		}
-
-		if ( !empty( $this->id ) ) {
-			$string_value .= "id=\"{$this->id}\" ";
-		}
-
-		if ( !empty( $this->type ) ) {
-			$string_value .= "type=\"{$this->type}\" ";
-		}
-
-		if ( !empty( $this->class ) ) {
-			$string_value .= "class=\"{$this->class}\" ";
-		}
-
-		if ( !empty( $this->style ) ) {
-			$string_value .= "style=\"{$this->style}\" ";
-		}
+		$string_value .= parent::getAttributeString();
 
 		if ( !empty( $this->placeholder ) ) {
 			$string_value .= "placeholder=\"{$this->placeholder}\" ";
@@ -101,11 +83,6 @@ class TextInput extends Input {
 		if ( !empty( $this->size ) ) {
 			$string_value .= "size=\"{$this->size}\" ";
 		}
-
-		if ( !empty( $this->value ) ) {
-			$string_value .= "value=\"{$this->value}\" ";
-		}
-
 
 		$string_value .= '/>';
 
