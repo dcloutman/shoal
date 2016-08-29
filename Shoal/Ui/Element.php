@@ -96,7 +96,7 @@ abstract class Element {
 	}
 
 	/**
-	 * Returns a string of attibutes. Can be called by inheriting classes' __toString() method for consistent behavior.
+	 * Returns a string of attibutes. Can be called by inheriting classes to ensure consistent behavior.
 	 * @return string A string of attributes for use in an opening or self closing HTML tag.
 	 */
 	public function getAttributeString () {
