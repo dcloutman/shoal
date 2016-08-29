@@ -70,6 +70,26 @@ abstract class Input extends Element {
 	}
 
 	/**
+	 * Returns a string of attibutes. Can be called by inheriting classes' __toString() method for consistent behavior.
+	 * @return string A string of attributes for use in an opening or self closing HTML tag.
+	 */
+	public function getAttributeString () {
+		$attributeString = '';
+
+		if ( !empty( $this->type ) ) {
+			$attributeString .= "type=\"{$this->type}\" ";
+		}
+
+		if ( !empty($this->value) ) {
+			$attributeString .= "value=\"{$this->value}\" ";
+		}
+
+		$attributeString .= parent::getAttributeString();
+
+		return $attributeString;
+	}
+
+	/**
 	 * A parent constructor to be called by all subclasses of Input.
 	 */
 	function __construct() {
