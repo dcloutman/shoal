@@ -8,6 +8,11 @@ class MemcachedTest extends TestCase {
     /** General test for the MemcachedPool object, which is used to configure the server pool.
      */
     public function testMemcachedPool () {
+        // Skip if Memcached extension is not installed.
+        if (!class_exists('\\Memcached')) {
+            return false;
+        }
+
         $this->assertEquals([], MemcachedPool::getServers());
 
         MemcachedPool::addServer(); // Sets for likely development values by default.
@@ -23,6 +28,11 @@ class MemcachedTest extends TestCase {
      * @depends testMemcachedPool
      */
     public function testMemcachedSingleton ($args) {
+        // Skip if Memcached extension is not installed.
+        if (!class_exists('\\Memcached')) {
+            return false;
+        }
+
         MemcachedPool::resetServers();
         MemcachedPool::addServer(); // Setup for a typical local server.
 
