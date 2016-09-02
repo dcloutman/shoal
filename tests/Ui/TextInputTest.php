@@ -2,12 +2,19 @@
 use PHPUnit\Framework\TestCase;
 use Shoal\Ui\TextInput;
 
-require_once(__DIR__ . '/setCommonAttributes.php');
-
 class TextInputTest extends TestCase {
+
+    private $element = null;
+
+    public function setUp () {
+        $this->element = new TextInput();
+    }
+
+    use \TestUtils\Ui\CommonAttributesTestTrait;
+
     public function testToString () {
-        $textInput = new TextInput();
-        $textInput = setCommonAttributes($textInput);
+        $textInput = $this->element;
+        $textInput = \TestUtils\Ui\Utilities::setCommonAttributes($textInput);
         $this->assertEquals(
             '<input type="text" name="testElements[]" id="uniqueValue1" class="freshStyle" style="color: #c3c3c3; background-color: #030303;border: 1px solid pink;" />', 
             (string) $textInput
