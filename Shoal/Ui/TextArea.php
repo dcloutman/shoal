@@ -11,7 +11,7 @@ namespace Shoal\Ui;
 /**
  * A UI class for implementing textarea form fields.
  */
-class TextArea extends Input implements HasClosingTag {
+class TextArea extends Element implements HasClosingTag {
 	use ContentTrait;
 
 	/**
@@ -103,6 +103,33 @@ class TextArea extends Input implements HasClosingTag {
 		$this->element_name = 'textarea';
 	}
 
+	/**
+	 * Returns a string of attibutes. Can be called by inheriting classes for consistent behavior.
+	 * @return string A string of attributes for use in an opening or self closing HTML tag.
+	 */
+	public function getAttributeString () {
+		$attributeString = '';
+
+		$attributeString .= parent::getAttributeString();
+
+		if ( !empty( $this->placeholder ) ) {
+			$attributeString .= "placeholder=\"{$this->placeholder}\" ";
+		}
+
+		if ( !empty( $this->cols ) ) {
+			$attributeString .= "cols=\"{$this->cols}\" ";
+		}
+
+		if ( !empty( $this->rows ) ) {
+			$attributeString .= "rows=\"{$this->rows}\" ";
+		}
+
+		if ( !empty( $this->maxlength ) ) {
+			$attributeString .= "maxlength=\"{$this->maxlength}\" ";
+		}
+
+		return $attributeString;
+	}
 
 	/** 
 	 * Get HTML fragment.
@@ -110,42 +137,8 @@ class TextArea extends Input implements HasClosingTag {
 	 */
 	public function __toString() {
 		$string_value = "<{$this->element_name} "; 
-
-		if ( !empty( $this->name ) ) {
-			$string_value .= "name=\"{$this->name}\" ";
-		}
-
-		if ( !empty( $this->id ) ) {
-			$string_value .= "id=\"{$this->id}\" ";
-		}
-
-		if ( !empty( $this->class ) ) {
-			$string_value .= "class=\"{$this->class}\" ";
-		}
-
-		if ( !empty( $this->style ) ) {
-			$string_value .= "style=\"{$this->style}\" ";
-		}
-
-		if ( !empty( $this->placeholder ) ) {
-			$string_value .= "placeholder=\"{$this->placeholder}\" ";
-		}
-
-		if ( !empty( $this->cols ) ) {
-			$string_value .= "cols=\"{$this->cols}\" ";
-		}
-
-		if ( !empty( $this->rows ) ) {
-			$string_value .= "rows=\"{$this->rows}\" ";
-		}
-
-		if ( !empty( $this->maxlength ) ) {
-			$string_value .= "maxlength=\"{$this->maxlength}\" ";
-		}
-
-
-
-		$string_value .= ">$this->content</{$this->element_name}>";
+		$string_value .= $this->getAttributeString();
+		$string_value .= ">{$this->content}</{$this->element_name}>";
 	
 		return $string_value;
 	}
