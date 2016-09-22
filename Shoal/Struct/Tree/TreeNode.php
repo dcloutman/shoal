@@ -23,7 +23,7 @@ interface TreeNode {
 
 	/**
 	 * Adds a child node to this node and points the child node's parent member to this node.
-	 * @param Treenode $newChild
+	 * @param TreeNode $newChild
 	 */
 	public function addChild (TreeNode $newChild);
 
