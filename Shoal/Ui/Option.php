@@ -60,7 +60,7 @@ class Option extends Element implements HasClosingTag {
 	function __construct() {
 		parent::__construct();
 
-		$this->element_name = 'option';
+		$this->elementName = 'option';
 	}
 
 
@@ -69,31 +69,31 @@ class Option extends Element implements HasClosingTag {
 	 * @return string
 	 */
 	public function __toString() {
-		$string_value = "<{$this->element_name} "; 
+		$stringValue = "<{$this->elementName} "; 
 
 		if ( !empty( $this->value ) ) {
-			$string_value .= "value=\"{$this->value}\" ";
+			$stringValue .= "value=\"{$this->value}\" ";
 		}
 
 		if ( !empty( $this->selected ) ) {
-			$string_value .= "selected=\"{$this->selected}\" ";
+			$stringValue .= "selected=\"{$this->selected}\" ";
 		}
 
 		if ( !empty( $this->id ) ) {
-			$string_value .= "id=\"{$this->id}\" ";
+			$stringValue .= "id=\"{$this->id}\" ";
 		}
 
 		if ( !empty( $this->class ) ) {
-			$string_value .= "class=\"{$this->class}\" ";
+			$stringValue .= "class=\"{$this->class}\" ";
 		}
 
 		if ( !empty( $this->style ) ) {
-			$string_value .= "style=\"{$this->style}\" ";
+			$stringValue .= "style=\"{$this->style}\" ";
 		}
 
-		$string_value .= ">$this->content</{$this->element_name}>";
+		$stringValue .= ">$this->content</{$this->elementName}>";
 	
-		return $string_value;
+		return $stringValue;
 	}
 
 }

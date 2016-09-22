@@ -13,10 +13,10 @@ namespace Shoal\Ui;
  */
 abstract class Element {
 	/**
-	 * @var string $element_name
+	 * @var string $elementName
 	 * @internal
 	 */
-	protected $element_name = '';
+	protected $elementName = '';
 
 	/**
 	 * @var string $style
@@ -45,11 +45,11 @@ abstract class Element {
 	protected $class = '';
 
 	/**
-	 * Combined getter / setter for $this->class. Called 'css_class' because 'class' is a reserved keyword. :(
+	 * Combined getter / setter for $this->class. Called 'classAtt' because 'class' is a reserved keyword. :(
 	 * @param string class
 	 * @return mixed A string if a value for class is not passed, the current instance of the object if it is.
 	 */
-	public function class_att ( $class = null ) {
+	public function classAtt ( $class = null ) {
 		if ( null !== $class ) {
 			$this->class = $class;
 			return $this;

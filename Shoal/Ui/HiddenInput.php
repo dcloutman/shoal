@@ -27,17 +27,17 @@ class HiddenInput extends Input {
 	 * @return string
 	 */
 	public function __toString () {
-		$string_value = "<{$this->element_name} type=\"{$this->type}\" "; 
+		$stringValue = "<{$this->elementName} type=\"{$this->type}\" "; 
 
 		if ( !empty( $this->name ) ) {
-			$string_value .= "name=\"{$this->name}\" ";
+			$stringValue .= "name=\"{$this->name}\" ";
 		}
 
 		if ( !empty( $this->id ) ) {
-			$string_value .= "id=\"{$this->id}\" ";
+			$stringValue .= "id=\"{$this->id}\" ";
 		}
-		$string_value .= "value=\"{$this->value}\" />";
+		$stringValue .= "value=\"{$this->value}\" />";
 
-		return $string_value;
+		return $stringValue;
 	}
 }

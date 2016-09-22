@@ -93,6 +93,6 @@ abstract class Input extends Element {
 	 * A parent constructor to be called by all subclasses of Input.
 	 */
 	function __construct() {
-		$this->element_name = 'input';
+		$this->elementName = 'input';
 	}
 }

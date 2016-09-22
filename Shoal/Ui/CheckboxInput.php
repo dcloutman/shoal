@@ -17,43 +17,43 @@ class CheckboxInput extends CheckableInput {
 	 * @return string
 	 */
 	public function __toString () {
-		$string_value = "<{$this->element_name} "; 
+		$stringValue = "<{$this->elementName} ";
 
 		if ( !empty( $this->name ) ) {
-			$string_value .= "name=\"{$this->name}\" ";
+			$stringValue .= "name=\"{$this->name}\" ";
 		}
 
 		if ( !empty( $this->id ) ) {
-			$string_value .= "id=\"{$this->id}\" ";
+			$stringValue .= "id=\"{$this->id}\" ";
 		}
 
 		if ( !empty( $this->class ) ) {
-			$string_value .= "class=\"{$this->class}\" ";
+			$stringValue .= "class=\"{$this->class}\" ";
 		}
 
 		if ( !empty( $this->style ) ) {
-			$string_value .= "style=\"{$this->style}\" ";
+			$stringValue .= "style=\"{$this->style}\" ";
 		}
 
 		if ( !empty( $this->size ) ) {
-			$string_value .= "size=\"{$this->size}\" ";
+			$stringValue .= "size=\"{$this->size}\" ";
 		}
 
 		if ( !empty( $this->type ) ) {
-			$string_value .= "type=\"{$this->type}\" ";
+			$stringValue .= "type=\"{$this->type}\" ";
 		}
 
 		if ( !empty( $this->value ) ) {
-			$string_value .= "value=\"{$this->value}\" ";
+			$stringValue .= "value=\"{$this->value}\" ";
 		}
 
 		if ( $this->checked ) {
-			$string_value .= "checked=\"checked\" ";
+			$stringValue .= "checked=\"checked\" ";
 		}
 
-		$string_value .= '/>';
+		$stringValue .= '/>';
 
-		return $string_value;
+		return $stringValue;
 	}
 
 	/**

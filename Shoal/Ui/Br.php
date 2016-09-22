@@ -17,7 +17,7 @@ class Br extends Element {
 	 * Create a Br object.
 	 */
 	function __construct() {
-		$this->element_name = 'br';
+		$this->elementName = 'br';
 	}
 
 	/**
@@ -35,10 +35,10 @@ class Br extends Element {
 	 * @return string
 	 */
 	public function __toString () {
-		$string_value = "<{$this->element_name} "; 
-		$string_value .= $this->getAttributeString();
-		$string_value .= '/>';
+		$stringValue = "<{$this->elementName} ";
+		$stringValue .= $this->getAttributeString();
+		$stringValue .= '/>';
 
-		return $string_value;
+		return $stringValue;
 	}
 }

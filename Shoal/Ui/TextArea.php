@@ -100,7 +100,7 @@ class TextArea extends Element implements HasClosingTag {
 	function __construct() {
 		parent::__construct();
 
-		$this->element_name = 'textarea';
+		$this->elementName = 'textarea';
 	}
 
 	/**
@@ -136,10 +136,10 @@ class TextArea extends Element implements HasClosingTag {
 	 * @return string
 	 */
 	public function __toString() {
-		$string_value = "<{$this->element_name} "; 
-		$string_value .= $this->getAttributeString();
-		$string_value .= ">{$this->content}</{$this->element_name}>";
+		$stringValue = "<{$this->elementName} "; 
+		$stringValue .= $this->getAttributeString();
+		$stringValue .= ">{$this->content}</{$this->elementName}>";
 	
-		return $string_value;
+		return $stringValue;
 	}
 }

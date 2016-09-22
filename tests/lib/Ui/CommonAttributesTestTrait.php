@@ -18,8 +18,8 @@ trait CommonAttributesTestTrait {
         $this->element->name($name);
         $this->assertEquals($name, $this->element->name());
 
-        $this->element->class_att($class);
-        $this->assertEquals($class, $this->element->class_att());
+        $this->element->classAtt($class);
+        $this->assertEquals($class, $this->element->classAtt());
 
         $this->element->style($style);
         $this->assertEquals($style, $this->element->style());
