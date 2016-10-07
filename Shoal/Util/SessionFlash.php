@@ -83,8 +83,8 @@ class SessionFlash {
 	 * @return array
 	 */
 	public function getFlash () {
-		$return_value = $_SESSION[self::$flashSessionPrefix . '.flash']; //Makes a copy.
-		return $return_value;
+		$returnValue = $_SESSION[self::$flashSessionPrefix . '.flash']; //Makes a copy.
+		return $returnValue;
 	}
 
 	/**
@@ -92,13 +92,13 @@ class SessionFlash {
 	 * @return array
 	 */
 	public function getAndClearFlash () {
-		$return_value = false;
+		$returnValue = false;
 		if ( $this->isSessionFlashSet() ) {
-			$return_value = $this->getFlash();
+			$returnValue = $this->getFlash();
 		}
 
 		$this->clearFlash();
-		return $return_value;
+		return $returnValue;
 	}
 
 	/**
