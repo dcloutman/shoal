@@ -5,7 +5,8 @@ use Shoal\Cache\Memcached\MemcachedPool;
 use Shoal\Cache\Memcached\MemcachedSingleton;
 
 class MemcachedTest extends TestCase {
-    /** General test for the MemcachedPool object, which is used to configure the server pool.
+    /**
+     * General test for the MemcachedPool object, which is used to configure the server pool.
      */
     public function testMemcachedPool () {
         // Skip if Memcached extension is not installed.
