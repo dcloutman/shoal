@@ -12,7 +12,7 @@ Objects do not use traditional getter / setter interface. Rather, they
 implement a jQuery style fluid interface. Attrbutes get / set methods 
 typically share the name of the attribute. Where and attibute name conflicts
 with a PHP keyword or function, it is appended with the extension "_att".
-(I.e, the attribute "for" on the <label> tag is accessed by the for_att()
+(I.e, the attribute "for" on the <label> tag is accessed by the forAtt()
 method.)
 
 (c)2015 David Cloutman
