@@ -31,17 +31,22 @@ class CircleTest extends TestCase {
      * @depends testConstruct
      */
     public function testIteration () {
+        // Construct a small circle of prime numbers.
         $circle = new Circle(new NumericCircleNode(1));
-
         $circle->insertAfterCurrent(new NumericCircleNode(2));
         $circle->next();
         $circle->insertAfterCurrent(new NumericCircleNode(3));
         $circle->next();
         $circle->insertAfterCurrent(new NumericCircleNode(5));
         $circle->next();
+        $circle->insertAfterCurrent(new NumericCircleNode(7));
+        $circle->next();
+        $circle->insertAfterCurrent(new NumericCircleNode(11));
+        $circle->next();
 
         $circle->rewind();
 
+        // Check sanity by contatinating, adding, and multiplying all values.
         $cat = '';
         $sum = 0;
         $product = 1;
@@ -53,15 +58,15 @@ class CircleTest extends TestCase {
             $circle->turn();
         } while (!$circle->isFirstCurrent());
 
-        $this->assertEquals('1235', $cat);
-        $this->assertEquals(11, $sum);
-        $this->assertEquals(30, $product);
+        $this->assertEquals('1235711', $cat);
+        $this->assertEquals(29, $sum);
+        $this->assertEquals(2310, $product);
 
         return $circle;
     }
 
     /**
-     * @depends testConstruct
+     * @depends testIteration
      */
     public function testSetFirstNode ($circle) {
         //$circle->setFirstNode($testNode);
