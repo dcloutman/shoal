@@ -38,15 +38,15 @@ class Circle implements \Iterator {
      * @param CircleNode|null $first Sets the first node in the circle by reference. Empty Circle instances are not allowed.
      */
     public function __construct (CircleNode $first) {
-        $this->setFirstNode($first);
-        $this->setCurrentNode($first);
+        $this->setFirst($first);
+        $this->setCurrent($first);
     }
 
     /**
      * Set the first node in the circle.
      * @param CircleNode $first Sets the first node in the circle by reference.
      */
-    public function setFirstNode (CircleNode $first) {
+    public function setFirst (CircleNode $first) {
         $this->firstNode = $first;
     }
 
@@ -54,7 +54,7 @@ class Circle implements \Iterator {
      * Cet a reference to the first node being pointed to in the.
      * @return CircleNode
     */
-    public function getFirstNode () {
+    public function getFirst () {
         return $this->firstNode;
     }
 
@@ -62,7 +62,7 @@ class Circle implements \Iterator {
      * Set the current node in the circle by reference.
      * @param CircleNode $current Sets the current node in the circle by reference.
      */
-    public function setCurrentNode (CircleNode $current) {
+    public function setCurrent (CircleNode $current) {
         $this->currentNode = $current;
    }
 
@@ -70,7 +70,7 @@ class Circle implements \Iterator {
      * Cet a reference to the current node being pointed to in the.
      * @return CircleNode
     */
-    public function getCurrentNode () {
+    public function getCurrent () {
         return $this->currentNode;
     }
    
@@ -78,34 +78,34 @@ class Circle implements \Iterator {
      * Get the next node in the circle without changing the current node.
      * @return CircleNode The next node in the circle.
      */
-    public function getNextNode () {
-        return $this->currentNode->getNextNode();
+    public function getNext () {
+        return $this->currentNode->getNext();
     }
 
     /**
      * Get the previous node in the circle without changing the current node.
      * @return CircleNode The previous node in the circle.
      */
-    public function getPreviousNode () {
-        return $this->currentNode->getPreviousNode();
+    public function getPrevious () {
+        return $this->currentNode->getPrevious();
     }
 
     /**
      * Adds a CircleNode ahead of the current node.
      * @param CircleNode $newChild
      */
-    public function insertNodeAfterCurrent (CircleNode $newNode) {
-        $newNode->setNextNode($this->currentNode->getNextNode());
-        $this->currentNode->setNextNode($newNode);
+    public function insertAfterCurrent (CircleNode $newNode) {
+        $newNode->setNext($this->currentNode->getNext());
+        $this->currentNode->setNext($newNode);
     }
 
     /**
      * Adds a CircleNode before the current node.
      * @param CircleNode $newChild
      */
-    public function insertNodeBeforeCurrent (CircleNode $newNode) {
-        $newNode->setPreviousNodeNode($this->currentNode->getPreviousNode());
-        $this->currentNode->setPreviousNode($newNode);
+    public function insertBeforeCurrent (CircleNode $newNode) {
+        $newNode->setPrevious($this->currentNode->getPrevious());
+        $this->currentNode->setPrevious($newNode);
     }
 
     /**
@@ -126,14 +126,14 @@ class Circle implements \Iterator {
      */
     public function turn () {
         $this->next();
-        return $this->getCurrentNode();
+        return $this->getCurrent();
     }
 
     /**
-     * Applies to callback function to the node and then its children through recursion.
+     * Applies acallback function to each node in the circle.
      * @param callable $func The function to be applied. The function must one parameter which will store each instance of TreeNode to which the callback is passed.
      */
-    public function applyFunctionToCircle (callable $func) {
+    public function applyFunction (callable $func) {
 
     }
     
@@ -142,7 +142,7 @@ class Circle implements \Iterator {
      * @return mixed
      */
     public function current () {
-        return $this->getCurrentNode();
+        return $this->getCurrent();
     }
     
     /**
@@ -158,7 +158,7 @@ class Circle implements \Iterator {
      * @return void
      */
     public function next () {
-        $this->currentNode = $this->currentNode->getNextNode();
+        $this->currentNode = $this->currentNode->getNext();
     }
     
     /**

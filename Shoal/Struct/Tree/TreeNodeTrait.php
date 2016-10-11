@@ -70,7 +70,7 @@ trait TreeNodeTrait {
 
 	/**
 	 * Applies to callback function to the node and then its children through recursion.
-	 * @param callable $func The function to be applied. The function must one parameter which will store each instance of TreeNode to which the callback is passed.
+	 * @param callable $func The function to be applied. The function must take one parameter which will be assigned the instance of TreeNode to which the callback is passed.
 	 */
 	public function applyFunctionToTree (callable $func) {
 		$func($this);

@@ -47,7 +47,7 @@ class CircleNode {
      * @param CircleNode $nextNode
      * @internal
      */
-    public function setNextNode (CircleNode $nextNode) {
+    public function setNext (CircleNode $nextNode) {
         $this->nextNode = $nextNode;
     }
 
@@ -55,7 +55,7 @@ class CircleNode {
      * Get a reference to the next CircleNode in a circle.
      * @return CircleNode The next node in the circle.
      */
-    public function getNextNode () {
+    public function getNext () {
         return $this->nextNode;
     }
 
@@ -64,7 +64,7 @@ class CircleNode {
      * @param CircleNode $previousNode
      * @internal
      */
-    public function setPreviousNode (CircleNode $previousNode) {
+    public function setPrevious (CircleNode $previousNode) {
         $this->previousNode = $previousNode;
     }
 
@@ -72,7 +72,7 @@ class CircleNode {
      * Get a reference to the next CircleNode in a circle.
      * @return CircleNode The previous node in the circle.
      */
-    public function getPreviousNode () {
+    public function getPrevious () {
         return $this->previousNode;
     }
 }
