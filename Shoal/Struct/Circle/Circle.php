@@ -20,12 +20,13 @@ namespace Shoal\Struct\Circle;
 /**
  * This class defines the Circle type which is a circularly linked list.
  */
-class Circle implements \Iterator {
+class Circle implements \Iterator, \Countable {
     /**
      * @var \Shoal\Struct\Circle\CircleNode Stores a reference to the first node in the circle.
      * @internal
      */
     protected $firstNode = null;
+    protected $count = 0;
 
     /**
      * @var \Shoal\Struct\Circle\CircleNode Stores an internal reference pointing to the current node in a circle.
@@ -40,6 +41,8 @@ class Circle implements \Iterator {
     public function __construct (CircleNode $first) {
         $this->setFirst($first);
         $this->setCurrent($first);
+
+        $this->count++;
     }
 
     /**
@@ -95,8 +98,15 @@ class Circle implements \Iterator {
      * @param CircleNode $newChild
      */
     public function insertAfterCurrent (CircleNode $newNode) {
+        // Set links inside new node.
         $newNode->setNext($this->currentNode->getNext());
+        $newNode->setPrevious($this->currentNode);
+
+        // Link adjacent nodes to new node.
+        $this->currentNode->getNext()->setPrevious($newNode);
         $this->currentNode->setNext($newNode);
+
+        $this->count++;
     }
 
     /**
@@ -104,8 +114,15 @@ class Circle implements \Iterator {
      * @param CircleNode $newChild
      */
     public function insertBeforeCurrent (CircleNode $newNode) {
+        // Set links inside new node.
         $newNode->setPrevious($this->currentNode->getPrevious());
+        $newNode->setNext($this->currentNode);
+
+        // Link adjacent nodes to new node.
+        $this->currentNode->getPrevious()->setNext($newNode);
         $this->currentNode->setPrevious($newNode);
+
+        $this->count++;
     }
 
     /**
@@ -121,12 +138,70 @@ class Circle implements \Iterator {
     }
 
     /**
+     * Tests to see if the circle has only one node.
+     * @return boolean
+     */
+    public function hasOnlyOneNode () {
+        if (
+            $this->currentNode->getNext() === $this->currentNode &&
+            $this->currentNode->getPrevious() === $this->currentNode
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Advances the current node to the next node and then returns the new current node. Essentially the same as calling next() and then current().
      * @return CircleNode
      */
     public function turn () {
         $this->next();
         return $this->getCurrent();
+    }
+
+    /**
+     * Reverses the current node to the previous node and then returns the new current node. The opposite of turn().
+     * @return CircleNode
+     */
+    public function reverse () {
+        $this->currentNode = $this->currentNode->getPrevious();
+        return $this->getCurrent();
+    }
+
+
+    /**
+     * Remove a node frot the circle. If the current node is removed, the next node will become the current node.
+     * @param CircleNode $nodeToRemove
+     * @param boolean $unsetNode By default, a node is unset from memory when it is removed. Passing false insures that other references to the node are preserved.
+     */
+    public function remove (CircleNode $nodeToRemove) {
+        // Test to see if the node is the only node in the Circle.
+        if ($this->hasOnlyOneNode()) {
+            // If it is, throw an exception. Circles are not allowed to be empty.
+            throw new LastCircleNodeException();
+        }
+        // If the node to be deleted is the first node, set the next node as the first node.
+        if ($nodeToRemove === $this->firstNode) {
+            $this->firstNode = $nodeToRemove->getNext();
+        }
+
+        // Make the previous node the previous node of the next node.
+        $nodeToRemove->getNext()->setPrevious($nodeToRemove->getPrevious());
+        // Make the next node the next node of the previous node.
+        $nodeToRemove->getPrevious()->setNext($nodeToRemove->getNext());
+
+        // If the current node is being remove, point the currentNode variable at the next node. This avoids a null pointer.
+        if ($this->currentNode === $nodeToRemove) {
+            $this->currentNode = $nodeToRemove->getNext();
+        }
+
+        // Unlink the node so that other variable referencing the CircleNode don't iterate over the Circle.
+        $nodeToRemove->setNext($nodeToRemove);
+        $nodeToRemove->setPrevious($nodeToRemove);
+
+        $this->count--;
     }
 
     /**
@@ -182,5 +257,11 @@ class Circle implements \Iterator {
         return false;
     }
 
-
+    /**
+     * Returns the number of CircleNodes objects in the Circle.
+     * @return boolean
+     */
+    public function count () {
+        return $this->count;
+    }
 }
