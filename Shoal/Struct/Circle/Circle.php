@@ -172,7 +172,7 @@ class Circle implements \Iterator, \Countable {
 
 
     /**
-     * Remove a node frot the circle. If the current node is removed, the next node will become the current node.
+     * Remove a node from the circle. If the current node is removed, the next node will become the current node.
      * @param CircleNode $nodeToRemove
      * @param boolean $unsetNode By default, a node is unset from memory when it is removed. Passing false insures that other references to the node are preserved.
      */
@@ -202,6 +202,28 @@ class Circle implements \Iterator, \Countable {
         $nodeToRemove->setPrevious($nodeToRemove);
 
         $this->count--;
+    }
+
+
+    /**
+     * Removes the node previous to the current node from the circle.
+     */
+    public function removePrevious () {
+        $this->remove($this->currentNode->getPrevious());
+    }
+
+    /**
+     * Removes the current node from the circle and sets the next node as the current node.
+     */
+    public function removeCurrent () {
+        $this->remove($this->currentNode);
+    }
+
+    /**
+     * Removes the node next from the current node from the circle.
+     */
+    public function removeNext () {
+        $this->remove($this->currentNode->getNext());
     }
 
     /**

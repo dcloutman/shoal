@@ -256,6 +256,35 @@ class CircleTest extends TestCase {
         $this->assertTrue($circle->getCurrent() === $circle->getPrevious());
         $this->assertTrue($circle->getNext() === $circle->getPrevious());
 
+
+        // Some quick tests of the remove() aliases.
+        $circle->insertBeforeCurrent(new NumericCircleNode(5));
+        $circle->insertAfterCurrent(new NumericCircleNode(11));
+        $circle->turn();
+        $circle->insertAfterCurrent(new NumericCircleNode(13));
+        $circle->rewind();
+
+        $this->assertEquals(4, count($circle));
+        $this->assertEquals(7, $circle->getCurrent()->getValue());
+
+        $circle->removeNext();
+        $this->assertEquals(3, count($circle));
+        $this->assertEquals(13, $circle->getNext()->getValue());
+        $this->assertEquals(7, $circle->getCurrent()->getValue());
+        $this->assertEquals(5, $circle->getPrevious()->getValue());
+
+        $circle->removePrevious();
+        $this->assertEquals(2, count($circle));
+        $this->assertEquals(13, $circle->getNext()->getValue());
+        $this->assertEquals(7, $circle->getCurrent()->getValue());
+        $this->assertEquals(13, $circle->getPrevious()->getValue());
+
+        $circle->removeCurrent();
+        $this->assertEquals(1, count($circle));
+        $this->assertEquals(13, $circle->getNext()->getValue());
+        $this->assertEquals(13, $circle->getCurrent()->getValue());
+        $this->assertEquals(13, $circle->getPrevious()->getValue());
+
         return $circle;
     }
 }
