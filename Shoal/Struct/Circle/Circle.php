@@ -26,6 +26,11 @@ class Circle implements \Iterator, \Countable {
      * @internal
      */
     protected $firstNode = null;
+
+    /**
+     * @var integer Tracks the number of CircleNode objects in the circle.
+     * @internal
+     */
     protected $count = 0;
 
     /**
@@ -95,7 +100,7 @@ class Circle implements \Iterator, \Countable {
 
     /**
      * Adds a CircleNode ahead of the current node.
-     * @param CircleNode $newChild
+     * @param CircleNode $newNode
      */
     public function insertAfterCurrent (CircleNode $newNode) {
         // Set links inside new node.
@@ -111,7 +116,7 @@ class Circle implements \Iterator, \Countable {
 
     /**
      * Adds a CircleNode before the current node.
-     * @param CircleNode $newChild
+     * @param CircleNode $newNode
      */
     public function insertBeforeCurrent (CircleNode $newNode) {
         // Set links inside new node.
