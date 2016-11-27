@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(760) NOT NULL,
   `user_type` enum('admin', 'employee', 'customer') NOT NULL,
-  `password_hash` char(40) NOT NULL,
+  `password_hash` TEXT NOT NULL,
   `user_salt` mediumtext NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
