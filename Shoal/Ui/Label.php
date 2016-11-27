@@ -9,7 +9,7 @@
 namespace Shoal\Ui;
 
 /**
- * A UI class implementing the <label /> element.
+ * A UI class implementing the &lt;label /&gt; element.
  */
 class Label extends Element implements HasClosingTag {
 	use ContentTrait;

@@ -9,7 +9,7 @@
 namespace Shoal\Ui;
 
 /**
- * A UI class implementing the <option /> element.
+ * A UI class implementing the &lt;option /&gt; element.
  */
 class Option extends Element implements HasClosingTag {
 	use ContentTrait;

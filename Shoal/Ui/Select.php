@@ -9,7 +9,7 @@
 namespace Shoal\Ui;
 
 /**
- * A UI class implementing the <select /> element.
+ * A UI class implementing the &lt;select /&gt; element.
  */
 class Select extends Element implements HasClosingTag {
 	/**

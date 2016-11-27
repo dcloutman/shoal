@@ -8,7 +8,8 @@
 
 namespace Shoal\Ui;
 
-/** Creates a submit button for a form.
+/**
+ * Creates a submit button for a form.
  */
 class SubmitInput extends TextInput {
 

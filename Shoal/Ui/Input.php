@@ -8,7 +8,8 @@
 
 namespace Shoal\Ui;
 
-/** An abstract input field.
+/**
+ * An abstract &lt;input /&gt; element.
  */
 abstract class Input extends Element {
 	/**

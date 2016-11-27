@@ -9,7 +9,7 @@
 namespace Shoal\Ui;
 
 /**
- * A UI class implementing the <br /> element.
+ * A UI class implementing the &lt;br /&gt; element.
  */
 class Br extends Element {
 
