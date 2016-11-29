@@ -10,7 +10,8 @@
 
 namespace Shoal\Util;
 
-/** Wraps flash routines that read and write into $_SESSION into an object.
+/**
+ * Wraps flash routines that read and write into $_SESSION into an object.
  */
 class SessionFlash {
 	/**
@@ -80,6 +81,7 @@ class SessionFlash {
 	}
 
 	/**
+	 * Returns a copy of the raw nested array structure from within the $_SESSION superglobal used by this library.
 	 * @return array
 	 */
 	public function getFlash () {
@@ -117,6 +119,10 @@ class SessionFlash {
 		unset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
 
+	/**
+	 * Creates the necessary array structure in the $_SESSION variable.
+	 * @internal
+	 */
 	private function initializeSesssionFlash () {
 		$_SESSION[self::$flashSessionPrefix . '.flash'] = [
 			'errors' => [],
