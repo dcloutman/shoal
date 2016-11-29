@@ -1,12 +1,28 @@
 <?php
+/**
+ * \Shoal\Ui\FileInput
+ * @author David Cloutman
+ * @package \Shoal\Ui
+ * @license MIT
+ */
+
 namespace Shoal\Ui;
+
+/**
+ * A UI class for implementing checkboxes.
+ */
 class FileInput extends Input {
 
+	/**
+	 * @var string $accept
+	 * @internal
+	 */
 	protected $accept;
 
-	/** Combined getter / setter for $this->accept, which specifies which file mime types are acceptable.
-	 *  @param string accept
-	 *  @return mixed A string if a value for accept is not passed, the current instance of the object if it is.
+	/**
+	 * Combined getter / setter for $this->accept, which specifies which file mime types are acceptable.
+	 * @param string $accept
+	 * @return mixed A string if a value for accept is not passed, the current instance of the object if it is.
 	 */
 	public function accept ( $accept = null ) {
 		if ( null !== $accept ) {
@@ -16,6 +32,9 @@ class FileInput extends Input {
 		return $this->accept;
 	}
 
+	/**
+	 * Create a FileInput object.
+	 */
 	function __construct() {
 		parent::__construct();
 
@@ -23,48 +42,52 @@ class FileInput extends Input {
 	}
 
 
+	/** 
+	 * Get HTML fragment.
+	 * @return string
+	 */
 	public function __toString () {
-		$string_value = "<{$this->element_name} ";
+		$stringValue = "<{$this->elementName} ";
 
 		if ( !empty( $this->name ) ) {
-			$string_value .= "name=\"{$this->name}\" ";
+			$stringValue .= "name=\"{$this->name}\" ";
 		}
 
 		if ( !empty( $this->id ) ) {
-			$string_value .= "id=\"{$this->id}\" ";
+			$stringValue .= "id=\"{$this->id}\" ";
 		}
 
 		if ( !empty( $this->type ) ) {
-			$string_value .= "type=\"{$this->type}\" ";
+			$stringValue .= "type=\"{$this->type}\" ";
 		}
 
 		if ( !empty( $this->class ) ) {
-			$string_value .= "class=\"{$this->class}\" ";
+			$stringValue .= "class=\"{$this->class}\" ";
 		}
 
 		if ( !empty( $this->style ) ) {
-			$string_value .= "style=\"{$this->style}\" ";
+			$stringValue .= "style=\"{$this->style}\" ";
 		}
 
 		if ( !empty( $this->placeholder ) ) {
-			$string_value .= "placeholder=\"{$this->placeholder}\" ";
+			$stringValue .= "placeholder=\"{$this->placeholder}\" ";
 		}
 
 		if ( !empty( $this->accept ) ) {
-			$string_value .= "accept=\"{$this->accept}\" ";
+			$stringValue .= "accept=\"{$this->accept}\" ";
 		}
 
 		if ( !empty( $this->size ) ) {
-			$string_value .= "size=\"{$this->size}\" ";
+			$stringValue .= "size=\"{$this->size}\" ";
 		}
 
 		if ( !empty( $this->value ) ) {
-			$string_value .= "value=\"{$this->value}\" ";
+			$stringValue .= "value=\"{$this->value}\" ";
 		}
 
 
-		$string_value .= '/>';
+		$stringValue .= '/>';
 
-		return $string_value;
+		return $stringValue;
 	}
 }

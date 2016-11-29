@@ -1,60 +1,130 @@
 <?php
+/**
+ * \Shoal\Util\SessionFlash
+ * "Flash" messages are messages that are meant to be displayed to a user after an operation, usually writable, has occured. These can 
+ * be errors, warnings, success confirmatios, or informational messages.
+ * @author David Cloutman
+ * @package \Shoal\Util
+ * @license MIT
+ */
+
 namespace Shoal\Util;
 
-/** Wraps flash routines that read and write into $_SESSION into an object.
+/**
+ * Wraps flash routines that read and write into $_SESSION into an object.
  */
 class SessionFlash {
+	/**
+	 * @var $flashSessionPrefix A unique prefix for flash $_SESSION elements.
+	 */
+	protected static  $flashSessionPrefix = 'shoal';
 
+	/**
+	 * By default, flash data is stored in $_SESSION['shoal.flash']. This method will change 'shoal', the prefix, to the value passed to $prefix.
+	 * @param string $prefix
+	 */
+	public static function setSessionFlashPrefix ($prefix) {
+		self::$flashSessionPrefix = $prefix;
+	}
+
+	/**
+	 * By default, flash data is stored in $_SESSION['shoal.flash']. This method will change 'shoal', the prefix, to the value passed to $prefix.
+	 * @return string
+	 */
+	public static function getSessionFlashPrefix () {
+		return self::$flashSessionPrefix;
+	}
+
+	/**
+	 * Create a SessionFlash object.
+	 */
 	function __construct () {
-		if ( !$this->is_session_flash_set() ) {
-			$this->initialize_sesssion_flash();
+		if ( !$this->isSessionFlashSet() ) {
+			$this->initializeSesssionFlash();
 		}
 	}
 
-	public function add_error ( $message, $fields = [] ) {
-		$_SESSION['lampfire.flash']['errors'][] = $message;
+	/**
+	 * Add an error to the array of flash errors stored in the session.
+	 * @param string $message An error message to display to users.
+	 * @param array $fields Appends the error_fields array stored in the session with the names of fields the application has flagged as invalid.
+	 */
+	public function addError ( $message, $fields = [] ) {
+		$_SESSION[self::$flashSessionPrefix . '.flash']['errors'][] = $message;
 		foreach ( $fields as $field ) {
-			$_SESSION['lampfire.flash']['error_fields'][] = $field;
+			$_SESSION[self::$flashSessionPrefix . '.flash']['error_fields'][] = $field;
 		}
 	}
 
-	public function add_warning ( $message ) {
-		$_SESSION['lampfire.flash']['warnings'][] = $message;
+	/**
+	 * Add an error to the array of flash errors stored in the session.
+	 * @param string $message A warning message to display to users.
+	 */
+	public function addWarning ( $message ) {
+		$_SESSION[self::$flashSessionPrefix . '.flash']['warnings'][] = $message;
 	}
 
-	public function add_success ( $message ) {
-		$_SESSION['lampfire.flash']['successes'][] = $message;
+	/**
+	 * Add an error to the array of flash errors stored in the session.
+	 * @param string $message A success message to display to users.
+	 */
+	public function addSuccess ( $message ) {
+		$_SESSION[self::$flashSessionPrefix . '.flash']['successes'][] = $message;
 	}
 
-	public function add_info ( $message ) {
-		$_SESSION['lampfire.flash']['info'][] = $message;
+	/**
+	 * Add an information message to the array of flash information messages stored in the session.
+	 * @param string $message An informational message to display to users.
+	 */
+	public function addInfo ( $message ) {
+		$_SESSION[self::$flashSessionPrefix . '.flash']['info'][] = $message;
 	}
 
-	public function get_flash () {
-		$return_value = $_SESSION['lampfire.flash']; //Makes a copy.
-		return $return_value;
+	/**
+	 * Returns a copy of the raw nested array structure from within the $_SESSION superglobal used by this library.
+	 * @return array
+	 */
+	public function getFlash () {
+		$returnValue = $_SESSION[self::$flashSessionPrefix . '.flash']; //Makes a copy.
+		return $returnValue;
 	}
 
-	public function get_and_clear_flash () {
-		$return_value = false;
-		if ( $this->is_session_flash_set() ) {
-			$return_value = $this->get_flash();
+	/**
+	 * This method wraps calls to the getFlash() and clearFlash() methods.
+	 * @return array
+	 */
+	public function getAndClearFlash () {
+		$returnValue = false;
+		if ( $this->isSessionFlashSet() ) {
+			$returnValue = $this->getFlash();
 		}
 
-		$this->clear_flash();
-		return $return_value;
+		$this->clearFlash();
+		return $returnValue;
 	}
 
-	private function is_session_flash_set () {
-		return isset( $_SESSION['lampfire.flash'] );
+	/**
+	 * Has the flash data structure been instantiated in $_SESSION?
+	 * @internal
+	 * @return boolean
+	 */
+	private function isSessionFlashSet () {
+		return isset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
 
-	public function clear_flash () {
-		unset( $_SESSION['lampfire.flash'] );
+	/**
+	 * Remove flash information from the session. This should be called immediately after flash messages are displayed.
+	 */
+	public function clearFlash () {
+		unset( $_SESSION[self::$flashSessionPrefix . '.flash'] );
 	}
 
-	private function initialize_sesssion_flash () {
-		$_SESSION['lampfire.flash'] = [
+	/**
+	 * Creates the necessary array structure in the $_SESSION variable.
+	 * @internal
+	 */
+	private function initializeSesssionFlash () {
+		$_SESSION[self::$flashSessionPrefix . '.flash'] = [
 			'errors' => [],
 			'error_fields' => [],
 			'warnings' => [],

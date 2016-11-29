@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="./bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+        >
+
+    <testsuites>
+        <testsuite name="Shoal">
+            <directory>./tests/</directory>
+        </testsuite>
+        <testsuite name="Shoal\Cache\Memcached">
+            <directory>./tests/Struct/Tree/</directory>
+        </testsuite>
+         <testsuite name="Shoal\Math">
+            <directory>./tests/Math/</directory>
+        </testsuite>
+        <testsuite name="Shoal\Struct\Tree">
+            <directory>./tests/Struct/Tree/</directory>
+        </testsuite>
+        <testsuite name="Shoal\Struct\Circle">
+            <directory>./tests/Struct/Circle/</directory>
+        </testsuite>
+        <testsuite name="Shoal\Ui">
+            <directory>./tests/Ui/</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>

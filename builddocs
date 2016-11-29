@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
+
+CONFIG_FILE='./tests/phpunit.xml'
+
+if [ ! -d ./docs ]; then
+    mkdir ./docs
+    chmod 700 docs
+else
+    echo "/docs directory alredy exits. Attempting to reemove with \`rm -r ./docs\`."
+    rm -r ./docs
+
+    if [ -d ./docs ]; then
+        echo "Could not remove old docs directory. New documentation was not built. Please try removing old documentation manually. Exiting."
+        exit
+    fi
+fi
+
+
+if [ -x ./vendor/bin/phpdoc ]; then
+    ./vendor/bin/phpdoc run -d ./Shoal -t ./docs --template="./vendor/phpdocumentor/phpdocumentor/data/templates/new-black"
+fi
