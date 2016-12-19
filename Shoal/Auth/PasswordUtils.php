@@ -68,7 +68,7 @@ class PasswordUtils {
 		}
 
 		// Default verification using PHP's password_verify function and a hashing mechanism that gets around Bcrypt's 72 character truncation limit.
-		return password_verify(base_convert(hash('sha512', self::orderSalts($suppliedPassword, $userSalt, $applicationSalt)), 16, 36), $passwordHash);
+		return password_verify(self::createSaltedPrehash($suppliedPassword, $userSalt, $applicationSalt), $passwordHash);
 
 
 	}
@@ -115,8 +115,19 @@ class PasswordUtils {
 		// Force the use of the standard PHP password_hash() function, but feed it a heavily salted sha512 hash of the password in base 36.
 		// to get around Bcrypt's 72 character limit. password_hash() will return a hash, a cost, and a random salt as part
 		// of the resulting string.
-		return password_hash(base_convert(hash('sha512', self::orderSalts($password, $userSalt, $applicationSalt)), 16, 36), PASSWORD_DEFAULT);
+		return password_hash(self::createSaltedPrehash($password, $userSalt, $applicationSalt), PASSWORD_DEFAULT);
 
+	}
+
+	/**
+	 * To integrate the randomness of the password salts, a sha512 salt is created and then base64 encoded.
+	 * @param string $password
+	 * @param string $userSalt A user-specific salt stored with the password hash.
+	 * @param string $applicationSalt An application provided salt, typically used for all users.
+	 * @return string The base64 encoded sha512 hash of the salted password.
+	 */
+	static protected function createSaltedPrehash($password, $userSalt, $applicationSalt) {
+		return base64_encode(hash('sha512', self::orderSalts($password, $userSalt, $applicationSalt)));
 	}
 
 	/**
