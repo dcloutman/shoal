@@ -112,7 +112,7 @@ class PasswordUtils {
 			error_log('Line ' . __LINE__ . ' in ' . __CLASS__ . ': Identical values were supplied for the user salt and the application salt. This can happen randomly, but more likely indicates an error in application logic.');
 		}
 
-		// Force the use of the standard PHP password_hash() function, but feed it a heavily salted sha512 hash of the password in base 36.
+		// Force the use of the standard PHP password_hash() function, but feed it a heavily salted sha512 hash of the password in base 64 encoding.
 		// to get around Bcrypt's 72 character limit. password_hash() will return a hash, a cost, and a random salt as part
 		// of the resulting string.
 		return password_hash(self::createSaltedPrehash($password, $userSalt, $applicationSalt), PASSWORD_DEFAULT);
