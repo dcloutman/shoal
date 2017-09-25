@@ -32,7 +32,7 @@ class In {
 	protected $maxLen = 8196;
 
 	/**
-	 * Create an new intance.
+	 * Create an new instance.
 	 */
 	public function __construct() {
 		$this->in = fopen('php://stdin', 'r');
