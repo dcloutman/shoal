@@ -4,9 +4,13 @@ It may be used in anyone's projects for any purpose. They are presented in the h
 
 ## Release Notes
 
-### v0.3.0
+### v0.4.0
 This version has the following primary goals.
+- Convert indentation from tabs to four spaces for better PSR-2 conformity. This will break git blame.
 
+## Change Log from Past Releases
+
+### v0.3.0
 - Create unit test coverage for the majority of classes
 - Fix bugs from previous releases discovered by unit tests
 - Convert method names and variables to camel case to better match PSR standards
