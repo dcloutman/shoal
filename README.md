@@ -8,9 +8,10 @@ It may be used in anyone's projects for any purpose. They are presented in the h
 This version has the following primary goals.
 
 - Create unit test coverage for the majority of classes
+- Fix bugs from previous releases discovered by unit tests
 - Convert method names and variables to camel case to better match PSR standards
-- Bring comments into conformity with the PHPDoc standard so that API documentation could be generated
-- Improve the password hashing algorithm for improved security
+- Bring comments into conformity with the PHPDoc standard so that API documentation can be auto-generated
+- Improve the password hashing algorithm so that hashes have a higher computational cost.
 - Introduce an implementation of a circularly linked list
-In the process of developing unit tests, bugs were found and (hopefully) fixed.
+
 

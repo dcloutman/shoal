@@ -9,10 +9,10 @@
 namespace Shoal\Cache\Memcached;
 
 
-/** This class generates a Memcached (with a 'd') class for the configured server pool. It
- *  requires a configuration class called MemcachedPool (see example above) that should be 
- *  placed in the application's configuration file.
- *
+/**
+ * This class generates a Memcached (with a 'd') class for the configured server pool. The pool
+ * can easily be configured with the MemcachedPool class. A call to MemcachedPool with and appropriate
+ * configuration can be placed in the application's configuration file.
  */
 class MemcachedSingleton {
 	// These timeframes increment by factors of 4. In practice, these tend to be useful in terms of fine tuning cache times.
@@ -121,6 +121,3 @@ class MemcachedSingleton {
 		return self::$memcachedInstance;
 	}
 }
-
-
-

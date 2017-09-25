@@ -6,6 +6,16 @@ cd $DIR
 CONFIG_FILE='./tests/phpunit.xml'
 
 if [ -d ./tests ] && [ -f $CONFIG_FILE ] && [ -x ./vendor/bin/phpunit ]; then
+    # If there is no tmp directory to write error messages from the tests into, create one.
+    if [ ! -d ./tests/tmp ]; then
+        mkdir ./tests/tmp
+    fi
+
+    # If there is a error log from previous tests, delete it.
+    if [ -f ./tests/tmp/errors.log ]; then
+        rm ./tests/tmp/errors.log
+    fi
+
     ./vendor/bin/phpunit --verbose  --configuration=$CONFIG_FILE ./tests
 else
     echo "Could not resolve path to phpunit binary, the configuration XML file (phpunit.xml), or the tests directory."

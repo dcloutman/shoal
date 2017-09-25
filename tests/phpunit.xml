@@ -11,6 +11,9 @@
          stopOnFailure="false"
          syntaxCheck="false"
         >
+    <php>
+        <ini name="error_log" value="./tests/tmp/errors.log" />
+    </php>
 
     <testsuites>
         <testsuite name="Shoal">
