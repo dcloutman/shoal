@@ -4,7 +4,7 @@
  *
  * The Circle object expects doubly linked nodes. In use, it is expected that this class will
  * be extended to include whatever data each node needs to store.
- * 
+ *
  * It is important to note that Circle object are responsible for maintaining relationships between
  * nodes, so setting next or previous nodes directly on the node object will break the integrity of
  * the circle.
@@ -26,7 +26,7 @@ class CircleNode {
      * @internal
      */
     protected $nextNode;
- 
+
     /**
      * @var \Shoal\Struct\Circle\CircleNode Stores a reference to the previous node in a circle.
      * @internal

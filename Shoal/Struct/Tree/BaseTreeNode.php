@@ -16,5 +16,5 @@ namespace Shoal\Struct\Tree;
  * @see TreeNode
  */
 class BaseTreeNode implements TreeNode {
-	use TreeNodeTrait;
+    use TreeNodeTrait;
 }

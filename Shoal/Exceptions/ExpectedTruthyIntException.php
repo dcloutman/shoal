@@ -14,13 +14,13 @@ namespace Shoal\Exceptions;
  * Extends PHP's \Exception class.
  */
 class ExpectedTruthyIntException extends \Exception {
-	/**
-	 * Create an instance of the exception.
-	 * @param string $message
-	 * @param integer $code
-	 * @param \Exception $previous
-	 */
-	public function __construct($message = null, $code = 0, Exception $previous = null) {
-		parent::__construct($message, $code, $previous);
-	}
+    /**
+     * Create an instance of the exception.
+     * @param string $message
+     * @param integer $code
+     * @param \Exception $previous
+     */
+    public function __construct($message = null, $code = 0, Exception $previous = null) {
+        parent::__construct($message, $code, $previous);
+    }
 }

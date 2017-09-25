@@ -12,134 +12,134 @@ namespace Shoal\Ui;
  * A UI class for implementing textarea form fields.
  */
 class TextArea extends Element implements HasClosingTag {
-	use ContentTrait;
+    use ContentTrait;
 
-	/**
-	 * @var string $placeholder
-	 * @internal
-	 */
-	protected $placeholder = '';
+    /**
+     * @var string $placeholder
+     * @internal
+     */
+    protected $placeholder = '';
 
-	/** 
-	 * Combined getter / setter for $this->placeholder
-	 * @param string placeholder
-	 * @return mixed A string if a value for placeholder is not passed, the current instance of the object if it is.
-	 */
-	public function placeholder ( $placeholder = null ) {
-		if ( null !== $placeholder ) {
-			$this->placeholder = $placeholder;
-			return $this;
-		}
-		return $this->placeholder;
-	}
-
-
-	/**
-	 * @var string $cols
-	 * @internal
-	 */
-	protected $cols = '';
-
-	/** 
-	 * Combined getter / setter for $this->cols
-	 * @param string cols
-	 * @return mixed A string if a value for cols is not passed, the current instance of the object if it is.
-	 */
-	public function cols ( $cols = null ) {
-		if ( null !== $cols ) {
-			$this->cols = $cols;
-			return $this;
-		}
-		return $this->cols;
-	}
+    /**
+     * Combined getter / setter for $this->placeholder
+     * @param string placeholder
+     * @return mixed A string if a value for placeholder is not passed, the current instance of the object if it is.
+     */
+    public function placeholder ( $placeholder = null ) {
+        if ( null !== $placeholder ) {
+            $this->placeholder = $placeholder;
+            return $this;
+        }
+        return $this->placeholder;
+    }
 
 
-	/**
-	 * @var string $rows
-	 * @internal
-	 */
-	protected $rows = '';
+    /**
+     * @var string $cols
+     * @internal
+     */
+    protected $cols = '';
 
-	/** 
-	 * Combined getter / setter for $this->rows
-	 * @param string rows
-	 * @return mixed A string if a value for rows is not passed, the current instance of the object if it is.
-	 */
-	public function rows ( $rows = null ) {
-		if ( null !== $rows ) {
-			$this->rows = $rows;
-			return $this;
-		}
-		return $this->rows;
-	}
-
-
-	/**
-	 * @var string $maxlength
-	 * @internal
-	 */
-	protected $maxlength = '';
-
-	/** 
-	 * Combined getter / setter for $this->maxlength
-	 * @param string $maxlength
-	 * @return mixed A string if a value for maxlength is not passed, the current instance of the object if it is.
-	 */
-	public function maxlength ( $maxlength = null ) {
-		if ( null !== $maxlength ) {
-			$this->maxlength = $maxlength;
-			return $this;
-		}
-		return $this->maxlength;
-	}
+    /**
+     * Combined getter / setter for $this->cols
+     * @param string cols
+     * @return mixed A string if a value for cols is not passed, the current instance of the object if it is.
+     */
+    public function cols ( $cols = null ) {
+        if ( null !== $cols ) {
+            $this->cols = $cols;
+            return $this;
+        }
+        return $this->cols;
+    }
 
 
-	/**
-	 * Create a TextArea object.
-	 */
-	function __construct() {
-		parent::__construct();
+    /**
+     * @var string $rows
+     * @internal
+     */
+    protected $rows = '';
 
-		$this->elementName = 'textarea';
-	}
+    /**
+     * Combined getter / setter for $this->rows
+     * @param string rows
+     * @return mixed A string if a value for rows is not passed, the current instance of the object if it is.
+     */
+    public function rows ( $rows = null ) {
+        if ( null !== $rows ) {
+            $this->rows = $rows;
+            return $this;
+        }
+        return $this->rows;
+    }
 
-	/**
-	 * Returns a string of attibutes. Can be called by inheriting classes for consistent behavior.
-	 * @return string A string of attributes for use in an opening or self closing HTML tag.
-	 */
-	public function getAttributeString () {
-		$attributeString = '';
 
-		$attributeString .= parent::getAttributeString();
+    /**
+     * @var string $maxlength
+     * @internal
+     */
+    protected $maxlength = '';
 
-		if ( !empty( $this->placeholder ) ) {
-			$attributeString .= "placeholder=\"{$this->placeholder}\" ";
-		}
+    /**
+     * Combined getter / setter for $this->maxlength
+     * @param string $maxlength
+     * @return mixed A string if a value for maxlength is not passed, the current instance of the object if it is.
+     */
+    public function maxlength ( $maxlength = null ) {
+        if ( null !== $maxlength ) {
+            $this->maxlength = $maxlength;
+            return $this;
+        }
+        return $this->maxlength;
+    }
 
-		if ( !empty( $this->cols ) ) {
-			$attributeString .= "cols=\"{$this->cols}\" ";
-		}
 
-		if ( !empty( $this->rows ) ) {
-			$attributeString .= "rows=\"{$this->rows}\" ";
-		}
+    /**
+     * Create a TextArea object.
+     */
+    function __construct() {
+        parent::__construct();
 
-		if ( !empty( $this->maxlength ) ) {
-			$attributeString .= "maxlength=\"{$this->maxlength}\" ";
-		}
+        $this->elementName = 'textarea';
+    }
 
-		return $attributeString;
-	}
+    /**
+     * Returns a string of attibutes. Can be called by inheriting classes for consistent behavior.
+     * @return string A string of attributes for use in an opening or self closing HTML tag.
+     */
+    public function getAttributeString () {
+        $attributeString = '';
 
-	/** 
-	 * Get HTML fragment.
-	 * @return string
-	 */
-	public function __toString() {
-		$stringValue = "<{$this->elementName} "; 
-		$stringValue .= $this->getAttributeString();
-		$stringValue .= ">{$this->content}</{$this->elementName}>";
-	
-		return $stringValue;
-	}
+        $attributeString .= parent::getAttributeString();
+
+        if ( !empty( $this->placeholder ) ) {
+            $attributeString .= "placeholder=\"{$this->placeholder}\" ";
+        }
+
+        if ( !empty( $this->cols ) ) {
+            $attributeString .= "cols=\"{$this->cols}\" ";
+        }
+
+        if ( !empty( $this->rows ) ) {
+            $attributeString .= "rows=\"{$this->rows}\" ";
+        }
+
+        if ( !empty( $this->maxlength ) ) {
+            $attributeString .= "maxlength=\"{$this->maxlength}\" ";
+        }
+
+        return $attributeString;
+    }
+
+    /**
+     * Get HTML fragment.
+     * @return string
+     */
+    public function __toString() {
+        $stringValue = "<{$this->elementName} ";
+        $stringValue .= $this->getAttributeString();
+        $stringValue .= ">{$this->content}</{$this->elementName}>";
+
+        return $stringValue;
+    }
 }

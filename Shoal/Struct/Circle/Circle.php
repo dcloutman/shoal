@@ -3,7 +3,7 @@
  * \Shoal\Struct\Circle\Circle
  *
  * An implementation of a circularly linked list data type. This data type is useful for
- * lists of items that occur in a repeating sequence where the beginning and end are 
+ * lists of items that occur in a repeating sequence where the beginning and end are
  * conceptually linked.
  *
  * Circle instances wrap CircleNode instances. The CircleNode class can be extended to store
@@ -81,7 +81,7 @@ class Circle implements \Iterator, \Countable {
     public function getCurrent () {
         return $this->currentNode;
     }
-   
+
     /**
      * Get the next node in the circle without changing the current node.
      * @return CircleNode The next node in the circle.
@@ -238,42 +238,42 @@ class Circle implements \Iterator, \Countable {
     public function applyFunction (callable $func) {
 
     }
-    
+
     /**
-     * Returns the current node in the circle. Implements Iterator interface. 
+     * Returns the current node in the circle. Implements Iterator interface.
      * @return mixed
      */
     public function current () {
         return $this->getCurrent();
     }
-    
+
     /**
-     * Returns a unique identifier for the current CircleNode object. Implements Iterator interface. 
+     * Returns a unique identifier for the current CircleNode object. Implements Iterator interface.
      * @return mixed A scalar value.
      */
     public function key () {
         return spl_object_hash($this->currentNode);
     }
-    
+
     /**
-     * Implements Iterator interface. 
+     * Implements Iterator interface.
      * @return void
      */
     public function next () {
         $this->currentNode = $this->currentNode->getNext();
     }
-    
+
     /**
-     * Implements Iterator interface. 
+     * Implements Iterator interface.
      * @return void
      */
     public function rewind () {
         $this->currentNode = $this->firstNode;
     }
-    
+
     /**
      * This will always return true, provided the circle is unbroken as there is always a next item.
-     * Implements Iterator interface. 
+     * Implements Iterator interface.
      * @return boolean
      */
     public function valid () {

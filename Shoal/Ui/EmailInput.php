@@ -13,13 +13,13 @@ namespace Shoal\Ui;
  */
 class EmailInput extends TextInput {
 
-	/**
-	 * Create an EmailInput object.
-	 */
-	function __construct() {
-		parent::__construct();
+    /**
+     * Create an EmailInput object.
+     */
+    function __construct() {
+        parent::__construct();
 
-		$this->type = 'email';
-	}
+        $this->type = 'email';
+    }
 
 }

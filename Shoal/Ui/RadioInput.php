@@ -13,56 +13,56 @@ namespace Shoal\Ui;
  */
 class RadioInput extends CheckableInput {
 
-	/** 
-	 * Get HTML fragment.
-	 * @return string
-	 */
-	public function __toString () {
-		$stringValue = "<{$this->elementName} ";
+    /**
+     * Get HTML fragment.
+     * @return string
+     */
+    public function __toString () {
+        $stringValue = "<{$this->elementName} ";
 
-		if ( !empty( $this->name ) ) {
-			$stringValue .= "name=\"{$this->name}\" ";
-		}
+        if ( !empty( $this->name ) ) {
+            $stringValue .= "name=\"{$this->name}\" ";
+        }
 
-		if ( !empty( $this->id ) ) {
-			$stringValue .= "id=\"{$this->id}\" ";
-		}
+        if ( !empty( $this->id ) ) {
+            $stringValue .= "id=\"{$this->id}\" ";
+        }
 
-		if ( !empty( $this->type ) ) {
-			$stringValue .= "type=\"{$this->type}\" ";
-		}
+        if ( !empty( $this->type ) ) {
+            $stringValue .= "type=\"{$this->type}\" ";
+        }
 
-		if ( !empty( $this->class ) ) {
-			$stringValue .= "class=\"{$this->class}\" ";
-		}
+        if ( !empty( $this->class ) ) {
+            $stringValue .= "class=\"{$this->class}\" ";
+        }
 
-		if ( !empty( $this->style ) ) {
-			$stringValue .= "style=\"{$this->style}\" ";
-		}
+        if ( !empty( $this->style ) ) {
+            $stringValue .= "style=\"{$this->style}\" ";
+        }
 
-		if ( !empty( $this->size ) ) {
-			$stringValue .= "size=\"{$this->size}\" ";
-		}
+        if ( !empty( $this->size ) ) {
+            $stringValue .= "size=\"{$this->size}\" ";
+        }
 
-		if ( !empty( $this->value ) ) {
-			$stringValue .= "value=\"{$this->value}\" ";
-		}
+        if ( !empty( $this->value ) ) {
+            $stringValue .= "value=\"{$this->value}\" ";
+        }
 
-		if ( $this->checked ) {
-			$stringValue .= "checked=\"checked\" ";
-		}
+        if ( $this->checked ) {
+            $stringValue .= "checked=\"checked\" ";
+        }
 
-		$stringValue .= '/>';
+        $stringValue .= '/>';
 
-		return $stringValue;
-	}
+        return $stringValue;
+    }
 
-	/**
-	 * Create a RadioInput object.
-	 */
-	function __construct() {
-		$this->type = 'radio';
+    /**
+     * Create a RadioInput object.
+     */
+    function __construct() {
+        $this->type = 'radio';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 }

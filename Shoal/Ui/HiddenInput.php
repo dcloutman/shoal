@@ -1,5 +1,5 @@
 <?php
-/** 
+/**
  * \Shoal\Ui\HiddenInput
  * @author David Cloutman
  * @package \Shoal\Ui
@@ -13,31 +13,31 @@ namespace Shoal\Ui;
  */
 class HiddenInput extends Input {
 
-	/**
-	 * Create an HiddenInput object.
-	 */
-	function __construct() {
-		parent::__construct();
+    /**
+     * Create an HiddenInput object.
+     */
+    function __construct() {
+        parent::__construct();
 
-		$this->type = 'hidden';
-	}
+        $this->type = 'hidden';
+    }
 
-	/** 
-	 * Get HTML fragment.
-	 * @return string
-	 */
-	public function __toString () {
-		$stringValue = "<{$this->elementName} type=\"{$this->type}\" "; 
+    /**
+     * Get HTML fragment.
+     * @return string
+     */
+    public function __toString () {
+        $stringValue = "<{$this->elementName} type=\"{$this->type}\" ";
 
-		if ( !empty( $this->name ) ) {
-			$stringValue .= "name=\"{$this->name}\" ";
-		}
+        if ( !empty( $this->name ) ) {
+            $stringValue .= "name=\"{$this->name}\" ";
+        }
 
-		if ( !empty( $this->id ) ) {
-			$stringValue .= "id=\"{$this->id}\" ";
-		}
-		$stringValue .= "value=\"{$this->value}\" />";
+        if ( !empty( $this->id ) ) {
+            $stringValue .= "id=\"{$this->id}\" ";
+        }
+        $stringValue .= "value=\"{$this->value}\" />";
 
-		return $stringValue;
-	}
+        return $stringValue;
+    }
 }

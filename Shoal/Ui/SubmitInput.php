@@ -13,13 +13,13 @@ namespace Shoal\Ui;
  */
 class SubmitInput extends TextInput {
 
-	/**
-	 * Create an SubmitInput object.
-	 */
-	function __construct() {
-		parent::__construct();
+    /**
+     * Create an SubmitInput object.
+     */
+    function __construct() {
+        parent::__construct();
 
-		$this->type = 'submit';
-	}
+        $this->type = 'submit';
+    }
 
 }
