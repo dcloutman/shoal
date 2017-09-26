@@ -34,10 +34,17 @@ class F {
      * Takes an array of arrays that share a common key with a presumed unique value and returns a new array of arrays indexed by that value.
      * @param array $arr
      * @param mixed $indexKey
+     * @throws \Shoal\Exceptions\ExpectedMemberMissingException
      */
     public static function reindexByMultiValue(array $arr, $indexKey) {
         $result = [];
-        foreach ($arr as $member) {
+        $arrLength = count($arr);
+        for ($i = 0; $i < $arrLength; $i++) {
+            $member = $arr[$i];
+            if (!array_key_exists($indexKey, $member)) {
+                throw new \Shoal\Exceptions\ExpectedMemberMissingException("Missing member indexed by {$indexKey} in source array at {$i}.");
+            }
+
             $result[$member[$indexKey]] = $member;
         }
 

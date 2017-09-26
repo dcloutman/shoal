@@ -30,9 +30,9 @@ class FTest extends TestCase {
             ['id' => 'six', 'data' => 6],
             ['id' => 'one-thousand twenty-four', 'data' => 1024],
         ];
-        
+
         $resultArray = F::reindexByMultiValue($sourceArray, 'id');
-        
+
         $this->assertArrayHasKey('one', $resultArray);
         $this->assertEquals(1, $resultArray['one']['data']);
         $this->assertArrayHasKey('two', $resultArray);
@@ -44,6 +44,24 @@ class FTest extends TestCase {
         $this->assertEquals(false, isset($resultArray['1']));
         $this->assertEquals(false, isset($resultArray[0]));
         $this->assertEquals(count($sourceArray), count($resultArray));
+    }
+
+    /**
+     * @depends testReindexByMultiValue
+     * @expectedException \Shoal\Exceptions\ExpectedMemberMissingException
+     */
+    public function testReindexByMultiValueMissingMemberKey () {
+        $sourceArray = [
+            ['id' => 'one', 'data' => 1],
+            ['id' => 'two', 'data' => 2],
+            ['id' => 'three', 'data' => 3],
+            ['id' => 'four', 'data' => 4],
+            ['id' => 'five', 'data' => 5],
+            ['data' => 6],
+            ['id' => 'one-thousand twenty-four', 'data' => 1024],
+        ];
+
+        $resultArray = F::reindexByMultiValue($sourceArray, 'id');
     }
 }
 
