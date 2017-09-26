@@ -25,9 +25,9 @@ class Label extends Element implements HasClosingTag {
      * @param string|lampfire\ui\Element $for Uses the id value of an Element object or assigns the string if a string is passed.
      * @return mixed A string if a value for for is not passed, the current instance of the object if it is.
      */
-    public function forAtt ( $for = null ) {
-        if ( null !== $for ) {
-            if ( $for instanceof Element ) {
+    public function forAtt ($for = null) {
+        if (null !== $for) {
+            if ($for instanceof Element) {
                 $this->for = $for->id();
             } else {
                 $this->for = $for;
@@ -54,19 +54,19 @@ class Label extends Element implements HasClosingTag {
     public function __toString() {
         $stringValue = "<{$this->elementName} ";
 
-        if ( !empty( $this->for ) ) {
+        if (!empty($this->for)) {
             $stringValue .= "for=\"{$this->for}\" ";
         }
 
-        if ( !empty( $this->id ) ) {
+        if (!empty($this->id)) {
             $stringValue .= "id=\"{$this->id}\" ";
         }
 
-        if ( !empty( $this->class ) ) {
+        if (!empty($this->class)) {
             $stringValue .= "class=\"{$this->class}\" ";
         }
 
-        if ( !empty( $this->style ) ) {
+        if (!empty($this->style)) {
             $stringValue .= "style=\"{$this->style}\" ";
         }
 

@@ -25,8 +25,8 @@ class Option extends Element implements HasClosingTag {
      * @param string value
      * @return mixed A string if a value for value is not passed, the current instance of the object if it is.
      */
-    public function value ( $value = null ) {
-        if ( null !== $value ) {
+    public function value ($value = null) {
+        if (null !== $value) {
             $this->value = $value;
             return $this;
         }
@@ -45,8 +45,8 @@ class Option extends Element implements HasClosingTag {
      * @param mixed|boolean Any truthy value selects the option. Any falsey value unselects it.
      * @return boolean If a value for $selected is not passed, returns true if the option is selected, false if it is not. If no value for $selected is passed, returns the current instance of the object.
      */
-    public function selected ( $selected = null ) {
-        if ( $selected !== null ) {
+    public function selected ($selected = null) {
+        if ($selected !== null) {
             $this->selected = $selected ? 'selected' : '';
         }
 
@@ -71,23 +71,23 @@ class Option extends Element implements HasClosingTag {
     public function __toString() {
         $stringValue = "<{$this->elementName} ";
 
-        if ( !empty( $this->value ) ) {
+        if (!empty($this->value)) {
             $stringValue .= "value=\"{$this->value}\" ";
         }
 
-        if ( !empty( $this->selected ) ) {
+        if (!empty($this->selected)) {
             $stringValue .= "selected=\"{$this->selected}\" ";
         }
 
-        if ( !empty( $this->id ) ) {
+        if (!empty($this->id)) {
             $stringValue .= "id=\"{$this->id}\" ";
         }
 
-        if ( !empty( $this->class ) ) {
+        if (!empty($this->class)) {
             $stringValue .= "class=\"{$this->class}\" ";
         }
 
-        if ( !empty( $this->style ) ) {
+        if (!empty($this->style)) {
             $stringValue .= "style=\"{$this->style}\" ";
         }
 

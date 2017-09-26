@@ -23,8 +23,8 @@ abstract class CheckableInput extends Input {
      * @param boolean $checked
      * @return mixed A boolean if a value for checked is not passed, the current instance of the object if it is.
      */
-    public function checked ( $checked = null ) {
-        if ( null !== $checked ) {
+    public function checked ($checked = null) {
+        if (null !== $checked) {
             $this->checked = $checked;
             return $this;
         }

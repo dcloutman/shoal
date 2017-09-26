@@ -24,8 +24,8 @@ class TextInput extends Input {
      * @param string $size
      * @return mixed A string if a value for size is not passed, the current instance of the object if it is.
      */
-    public function size ( $size = null ) {
-        if ( null !== $size ) {
+    public function size ($size = null) {
+        if (null !== $size) {
             $this->size = $size;
             return $this;
         }
@@ -44,8 +44,8 @@ class TextInput extends Input {
      * @param string $maxlength
      * @return mixed A string if a value for maxlength is not passed, the current instance of the object if it is.
      */
-    public function maxlength ( $maxlength = null ) {
-        if ( null !== $maxlength ) {
+    public function maxlength ($maxlength = null) {
+        if (null !== $maxlength) {
             $this->maxlength = $maxlength;
             return $this;
         }
@@ -72,15 +72,15 @@ class TextInput extends Input {
 
         $stringValue .= parent::getAttributeString();
 
-        if ( !empty( $this->placeholder ) ) {
+        if (!empty($this->placeholder)) {
             $stringValue .= "placeholder=\"{$this->placeholder}\" ";
         }
 
-        if ( !empty( $this->maxlength ) ) {
+        if (!empty($this->maxlength)) {
             $stringValue .= "maxlength=\"{$this->maxlength}\" ";
         }
 
-        if ( !empty( $this->size ) ) {
+        if (!empty($this->size)) {
             $stringValue .= "size=\"{$this->size}\" ";
         }
 

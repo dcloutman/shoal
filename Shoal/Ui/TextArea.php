@@ -25,8 +25,8 @@ class TextArea extends Element implements HasClosingTag {
      * @param string placeholder
      * @return mixed A string if a value for placeholder is not passed, the current instance of the object if it is.
      */
-    public function placeholder ( $placeholder = null ) {
-        if ( null !== $placeholder ) {
+    public function placeholder ($placeholder = null) {
+        if (null !== $placeholder) {
             $this->placeholder = $placeholder;
             return $this;
         }
@@ -45,8 +45,8 @@ class TextArea extends Element implements HasClosingTag {
      * @param string cols
      * @return mixed A string if a value for cols is not passed, the current instance of the object if it is.
      */
-    public function cols ( $cols = null ) {
-        if ( null !== $cols ) {
+    public function cols ($cols = null) {
+        if (null !== $cols) {
             $this->cols = $cols;
             return $this;
         }
@@ -65,8 +65,8 @@ class TextArea extends Element implements HasClosingTag {
      * @param string rows
      * @return mixed A string if a value for rows is not passed, the current instance of the object if it is.
      */
-    public function rows ( $rows = null ) {
-        if ( null !== $rows ) {
+    public function rows ($rows = null) {
+        if (null !== $rows) {
             $this->rows = $rows;
             return $this;
         }
@@ -85,8 +85,8 @@ class TextArea extends Element implements HasClosingTag {
      * @param string $maxlength
      * @return mixed A string if a value for maxlength is not passed, the current instance of the object if it is.
      */
-    public function maxlength ( $maxlength = null ) {
-        if ( null !== $maxlength ) {
+    public function maxlength ($maxlength = null) {
+        if (null !== $maxlength) {
             $this->maxlength = $maxlength;
             return $this;
         }
@@ -112,19 +112,19 @@ class TextArea extends Element implements HasClosingTag {
 
         $attributeString .= parent::getAttributeString();
 
-        if ( !empty( $this->placeholder ) ) {
+        if (!empty($this->placeholder)) {
             $attributeString .= "placeholder=\"{$this->placeholder}\" ";
         }
 
-        if ( !empty( $this->cols ) ) {
+        if (!empty($this->cols)) {
             $attributeString .= "cols=\"{$this->cols}\" ";
         }
 
-        if ( !empty( $this->rows ) ) {
+        if (!empty($this->rows)) {
             $attributeString .= "rows=\"{$this->rows}\" ";
         }
 
-        if ( !empty( $this->maxlength ) ) {
+        if (!empty($this->maxlength)) {
             $attributeString .= "maxlength=\"{$this->maxlength}\" ";
         }
 

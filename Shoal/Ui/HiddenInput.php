@@ -29,11 +29,11 @@ class HiddenInput extends Input {
     public function __toString () {
         $stringValue = "<{$this->elementName} type=\"{$this->type}\" ";
 
-        if ( !empty( $this->name ) ) {
+        if (!empty($this->name)) {
             $stringValue .= "name=\"{$this->name}\" ";
         }
 
-        if ( !empty( $this->id ) ) {
+        if (!empty($this->id)) {
             $stringValue .= "id=\"{$this->id}\" ";
         }
         $stringValue .= "value=\"{$this->value}\" />";

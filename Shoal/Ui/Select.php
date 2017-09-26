@@ -23,8 +23,8 @@ class Select extends Element implements HasClosingTag {
      * @param string content
      * @return mixed A string if a value for content is not passed, the current instance of the object if it is.
      */
-    public function content ( $content = null ) {
-        if ( null !== $content ) {
+    public function content ($content = null) {
+        if (null !== $content) {
             $this->content = $content;
             return $this;
         }
@@ -36,7 +36,7 @@ class Select extends Element implements HasClosingTag {
      * @param Option $option An Option object to add to the Select control.
      * @param Select A reference to the instance of this object.
      */
-    public function addOption( Option $option ) {
+    public function addOption(Option $option) {
         $this->content .= (string) $option;
 
         return $this;
@@ -49,16 +49,16 @@ class Select extends Element implements HasClosingTag {
      * @return Select A reference to the instance of this object.
      * @todo Add support for multiple select boxes.
      */
-    public function addOptionsFromArray ( $dataArray, $selectValue = null ) {
-        foreach ( $dataArray as $optionValue => $optionContent ) {
+    public function addOptionsFromArray ($dataArray, $selectValue = null) {
+        foreach ($dataArray as $optionValue => $optionContent) {
             $option = new Option();
-            $option->value( $optionValue )
-                ->content( $optionContent );
-            if ( null !== $selectValue && $selectValue == $optionValue ) {
-                $option->selected( true );
+            $option->value($optionValue)
+                ->content($optionContent);
+            if (null !== $selectValue && $selectValue == $optionValue) {
+                $option->selected(true);
             }
 
-            $this->addOption( $option );
+            $this->addOption($option);
         }
 
         return $this;
@@ -75,7 +75,7 @@ class Select extends Element implements HasClosingTag {
      * @param mixed|boolean Any truthy value selects the option. Any falsey value unselects it.
      * @return boolean If a value for $multiple is not passed, returns true if the option is multiple, false if it is not. If no value for $multiple is passed, returns the current instance of the object.
      */
-    public function multiple ( $multiple = true ) {
+    public function multiple ($multiple = true) {
         $this->multiple = $multiple ? 'multiple' : '';
 
         return (boolean) $this->multiple;
@@ -98,23 +98,23 @@ class Select extends Element implements HasClosingTag {
     public function __toString() {
         $stringValue = "<{$this->elementName} ";
 
-        if ( !empty( $this->multiple ) ) {
+        if (!empty($this->multiple)) {
             $stringValue .= "multiple=\"{$this->multiple}\" ";
         }
 
-        if ( !empty( $this->name ) ) {
+        if (!empty($this->name)) {
             $stringValue .= "name=\"{$this->name}\" ";
         }
 
-        if ( !empty( $this->id ) ) {
+        if (!empty($this->id)) {
             $stringValue .= "id=\"{$this->id}\" ";
         }
 
-        if ( !empty( $this->class ) ) {
+        if (!empty($this->class)) {
             $stringValue .= "class=\"{$this->class}\" ";
         }
 
-        if ( !empty( $this->style ) ) {
+        if (!empty($this->style)) {
             $stringValue .= "style=\"{$this->style}\" ";
         }
 

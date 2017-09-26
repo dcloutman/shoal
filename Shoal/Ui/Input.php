@@ -23,8 +23,8 @@ abstract class Input extends Element {
      * @param string type
      * @return mixed A string if a value for type is not passed, the current instance of the object if it is.
      */
-    public function type ( $type = null ) {
-        if ( null !== $type ) {
+    public function type ($type = null) {
+        if (null !== $type) {
             $this->type = $type;
             return $this;
         }
@@ -42,8 +42,8 @@ abstract class Input extends Element {
      * @param string value
      * @return mixed A string if a value for value is not passed, the current instance of the object if it is.
      */
-    public function value ( $value = null ) {
-        if ( null !== $value ) {
+    public function value ($value = null) {
+        if (null !== $value) {
             $this->value = $value;
             return $this;
         }
@@ -62,8 +62,8 @@ abstract class Input extends Element {
      * @param string placeholder
      * @return mixed A string if a value for placeholder is not passed, the current instance of the object if it is.
      */
-    public function placeholder ( $placeholder = null ) {
-        if ( null !== $placeholder ) {
+    public function placeholder ($placeholder = null) {
+        if (null !== $placeholder) {
             $this->placeholder = $placeholder;
             return $this;
         }
@@ -77,11 +77,11 @@ abstract class Input extends Element {
     public function getAttributeString () {
         $attributeString = '';
 
-        if ( !empty( $this->type ) ) {
+        if (!empty($this->type)) {
             $attributeString .= "type=\"{$this->type}\" ";
         }
 
-        if ( !empty($this->value) ) {
+        if (!empty($this->value)) {
             $attributeString .= "value=\"{$this->value}\" ";
         }
 

@@ -29,8 +29,8 @@ abstract class Element {
      * @param string style
      * @return mixed A string if a value for style is not passed, the current instance of the object if it is.
      */
-    public function style ( $style = null ) {
-        if ( null !== $style ) {
+    public function style ($style = null) {
+        if (null !== $style) {
             $this->style = $style;
             return $this;
         }
@@ -49,8 +49,8 @@ abstract class Element {
      * @param string class
      * @return mixed A string if a value for class is not passed, the current instance of the object if it is.
      */
-    public function classAtt ( $class = null ) {
-        if ( null !== $class ) {
+    public function classAtt ($class = null) {
+        if (null !== $class) {
             $this->class = $class;
             return $this;
         }
@@ -68,8 +68,8 @@ abstract class Element {
      * @param string id
      * @return mixed A string if a value for id is not passed, the current instance of the object if it is.
      */
-    public function id ( $id = null ) {
-        if ( null !== $id ) {
+    public function id ($id = null) {
+        if (null !== $id) {
             $this->id = $id;
             return $this;
         }
@@ -87,8 +87,8 @@ abstract class Element {
      * @param string name
      * @return mixed A string if a value for name is not passed, the current instance of the object if it is.
      */
-    public function name ( $name = null ) {
-        if ( null !== $name ) {
+    public function name ($name = null) {
+        if (null !== $name) {
             $this->name = $name;
             return $this;
         }
@@ -102,19 +102,19 @@ abstract class Element {
     public function getAttributeString () {
         $attributeString = '';
 
-        if ( !empty( $this->name ) ) {
+        if (!empty($this->name)) {
             $attributeString .= "name=\"{$this->name}\" ";
         }
 
-        if ( !empty( $this->id ) ) {
+        if (!empty($this->id)) {
             $attributeString .= "id=\"{$this->id}\" ";
         }
 
-        if ( !empty( $this->class ) ) {
+        if (!empty($this->class)) {
             $attributeString .= "class=\"{$this->class}\" ";
         }
 
-        if ( !empty( $this->style ) ) {
+        if (!empty($this->style)) {
             $attributeString .= "style=\"{$this->style}\" ";
         }
 
