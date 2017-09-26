@@ -1,12 +1,16 @@
+# Shoal UI README
+
 This library contains PHP classes that can be populated with data in the
 presentation logic portion of an application, and then be echoed inside a
-template. The result HTML 5 compatible and XHTML 1.0 friendly markup that is
+template. The resulting HTML 5 compatible and XHTML 1.0 friendly markup that is
 syntactically correct and semantically optimized. It eliminates the bugs that
 can be intruduced by manually inserting scalar values into hand coded HTML.
 
 The library currently implements the most commonly used form controls only.
 It may or may not be extended in the furture, but is intended to be extensible 
 for any HTML element.
+
+## Fluid Method Interface
 
 Objects do not use traditional getter / setter interface. Rather, they
 implement a jQuery style fluid interface. Attrbutes get / set methods 
@@ -15,4 +19,6 @@ with a PHP keyword or function, it is appended with the extension "_att".
 (I.e, the attribute "for" on the <label> tag is accessed by the forAtt()
 method.)
 
-(c)2015 David Cloutman
+(c)2015-2017 David Cloutman
+
+Released with Shoal under the MIT License.
