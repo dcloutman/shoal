@@ -2,7 +2,7 @@
 /**
  * \Shoal\Exceptions\ExpectedIntException
  * @author David Cloutman
- * @package \Shoal\Auth
+ * @package \Shoal\Exceptions
  * @license MIT
  *
  * An exception to be thrown when a variable, argument, etc. is expected to be of the actual type integer, but not when a string representation of an integer is acceptable.
