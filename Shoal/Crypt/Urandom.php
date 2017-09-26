@@ -23,23 +23,55 @@ class Urandom {
      * @var resource $instance The file resource pointing to /dev/urandom.
      * @internal
      */
-    protected $urandom_rsc = null;
+    protected $urandomRsc = null;
+
+    /**
+     * Opens /dev/urandom if not already open.
+     * @deprecated 0.4.0 Use openURandom() method.
+     * @see Urandom::openUrandom();
+     */
+    public function open_urandom () {
+        $this->openUrandom();
+    }
 
     /**
      * Opens /dev/urandom if not already open.
      */
-    public function open_urandom () {
-        if ( null === $this->urandom_rsc || !is_resource( $this->urandom_rsc ) ) {
-            $this->urandom_rsc = fopen('/dev/urandom', 'rb');
+    public function openUrandom () {
+        if (null === $this->urandomRsc || !is_resource($this->urandomRsc)) {
+            $this->urandomRsc = fopen('/dev/urandom', 'rb');
         }
+    }
+
+
+    /**
+     * Returns the current handle for /dev/urandom.
+     * @return resource
+     * @deprecated v0.4.0 Use getUrandomRsc() method.
+     * @see Urandom::getUrandomRsc()
+     */
+    public function get_urandom_rsc () {
+        return $this->getUrandomRsc();
     }
 
     /**
      * Returns the current handle for /dev/urandom.
      * @return resource
      */
-    public function get_urandom_rsc () {
-        return $this->urandom_rsc;
+    public function getUrandomRsc () {
+        return $this->urandomRsc;
+    }
+
+
+    /**
+     * Gets a random stream of binary values.
+     * @param integer $length The number of bytes read. Default is 4096.
+     * @return string A stream of random binary values.
+     * @deprecated 0.4.0 Use getBinaryStream() method.
+     * @see Urandom::getBinaryStream()
+     */
+    public function get_binary_stream ($length = 4096) {
+        return $this->getBinaryStream($length);
     }
 
     /**
@@ -47,55 +79,97 @@ class Urandom {
      * @param integer $length The number of bytes read. Default is 4096.
      * @return string A stream of random binary values.
      */
-    public function get_binary_stream ( $length = 4096 ) {
-        $random_binary = fread( $this->urandom_rsc, $length );
-        return $random_binary;
+    public function getBinaryStream ($length = 4096) {
+        $randomBinary = fread($this->urandomRsc, $length);
+        return $randomBinary;
     }
 
     /**
      * Generates a random base64 encoded string based off a /dev/urandom binary string.
-     * @param $stream_length Default is 4096 bytes. Longer binary streams produce longer, and thus more secure, base64 strings, but take longer to generate.
+     * @param integer $streamLength Default is 4096 bytes. Longer binary streams produce longer, and thus more secure, base64 strings, but take longer to generate.
+     * @return string
+     * @deprecated v0.4.0 Use getRandomBase64String() method.
+     * @see Urandom::getRandomBase64String()
+     */
+    public function get_random_base64_string ($streamLength = 4096) {
+        return $this->getRandomBase64String($streamLength);
+    }
+
+    /**
+     * Generates a random base64 encoded string based off a /dev/urandom binary string.
+     * @param integer $streamLength Default is 4096 bytes. Longer binary streams produce longer, and thus more secure, base64 strings, but take longer to generate.
      * @return string
      */
-    public function get_random_base64_string ( $stream_length = 4096 ) {
-        return base64_encode( $this->get_binary_stream( $stream_length ) );
+    public function getRandomBase64String ($streamLength = 4096) {
+        return base64_encode($this->getBinaryStream($streamLength));
     }
 
     /**
      * Generates a random sha1 hash based off a /dev/urandom binary string.
-     * @param $stream_length Default is 4096 bytes. Longer binary streams have more possible sha1 values but take longer to generate.
+     * @param integer $streamLength Default is 4096 bytes. Longer binary streams have more possible sha1 values but take longer to generate.
+     * @deprecated 0.4.0 Use getRandomSha1() method.
+     * @see Urandom::getRandomSha1()
      */
-    public function get_random_sha1 ( $stream_length = 4096 ) {
-        return sha1( $this->get_binary_stream( $stream_length ) );
+    public function get_random_sha1 ($streamLength = 4096) {
+        return $this->getRandomSha1();
+    }
+
+    /**
+     * Generates a random sha1 hash based off a /dev/urandom binary string.
+     * @param integer $streamLength Default is 4096 bytes. Longer binary streams have more possible sha1 values but take longer to generate.
+     */
+    public function getRandomSha1 ($streamLength = 4096) {
+        return sha1($this->getBinaryStream($streamLength));
     }
 
     /**
      * Generates a random md5 hash based off a /dev/urandom binary string.
-     * @param $stream_length Default is 4096 bytes. Longer binary streams have more possible md5 values but take longer to generate.
+     * @param integer $streamLength Default is 4096 bytes. Longer binary streams have more possible md5 values but take longer to generate.
+     * @deprecated 0.4.0 Use getRandomMd5() method
+     * @see Urandom::getRandomMd5()
      */
-    public function get_random_md5 ( $stream_length = 4096 ) {
-        return md5( $this->get_binary_stream( $stream_length ) );
+    public function get_random_md5 ($streamLength = 4096) {
+        return $this->getRandomMd5($streamLength);
     }
+
+    /**
+     * Generates a random md5 hash based off a /dev/urandom binary string.
+     * @param integer $streamLength Default is 4096 bytes. Longer binary streams have more possible md5 values but take longer to generate.
+     */
+    public function getRandomMd5 ($streamLength = 4096) {
+        return md5($this->getBinaryStream($streamLength));
+    }
+
 
     /**
      * This class may only instantiate itself.
      * @internal
      */
     private function __construct () {
-        $this->open_urandom();
+        $this->openUrandom();
+    }
+
+    /**
+     * Returns the single instance of the lampfire\util\Urandom class.
+     * @deprecated 0.4.0 Use getInstance() method.
+     * @see Urandom::getInstance()
+     */
+    public static function get_instance() {
+        return self::getInstance();
     }
 
     /**
      * Returns the single instance of the lampfire\util\Urandom class.
      */
-    public static function get_instance() {
-        if ( null === self::$instance ) {
+    public static function getInstance() {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
-        self::$instance->open_urandom(); // Ensure that urandom is open each time the singleton is requested.
+        self::$instance->openUrandom(); // Ensure that urandom is open each time the singleton is requested.
         return self::$instance;
     }
+
 
     /**
      * You may not clone a singleton.

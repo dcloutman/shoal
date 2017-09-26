@@ -69,8 +69,6 @@ class PasswordUtils {
 
         // Default verification using PHP's password_verify function and a hashing mechanism that gets around Bcrypt's 72 character truncation limit.
         return password_verify(self::createSaltedPrehash($suppliedPassword, $userSalt, $applicationSalt), $passwordHash);
-
-
     }
 
     /**
@@ -163,7 +161,7 @@ class PasswordUtils {
      * @return string A base64 encoded random binary stream.
      */
     static public function generateSalt ($streamLength = self::ADVISED_MIN_SALT_LENGTH) {
-        $urandom = \Shoal\Crypt\Urandom::get_instance();
-        return $urandom->get_random_base64_string($streamLength);
+        $urandom = \Shoal\Crypt\Urandom::getInstance();
+        return $urandom->getRandomBase64String($streamLength);
     }
 }
