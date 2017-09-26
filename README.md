@@ -1,4 +1,4 @@
-#Lampfire Shoal
+# Lampfire Shoal
 The Lampfire Shoal consists of PSR-4 autoloader compatible PHP libraries written by David Cloutman. 
 It may be used in anyone's projects for any purpose. They are presented in the hope that they may be useful, but their usefulness is not guaranteed.
 
@@ -6,6 +6,7 @@ It may be used in anyone's projects for any purpose. They are presented in the h
 
 ### v0.4.0
 This version has the following primary goals.
+
 - Convert indentation from tabs to four spaces for better PSR-2 conformity. This will break git blame.
 - Convert remaining underscore method names to camelCase and deprecate underscore methods, converting them to wrappers.
 
