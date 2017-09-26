@@ -20,16 +20,12 @@ class SubmitInputTest extends TestCase {
             (string) $submitInput
         );
 
-        $placeholderText = 'user@domain.com';
-        $submitInput->placeholder($placeholderText);
-        $this->assertEquals($placeholderText, $submitInput->placeholder());
-
         $value = 'Hello world!';
         $submitInput->value($value);
         $this->assertEquals($value, $submitInput->value());
 
         $this->assertEquals(
-            '<input type="submit" value="Hello world!" name="testElements[]" id="uniqueValue1" class="freshStyle" style="color: #c3c3c3; background-color: #030303;border: 1px solid pink;" placeholder="user@domain.com" />', 
+            '<input type="submit" value="Hello world!" name="testElements[]" id="uniqueValue1" class="freshStyle" style="color: #c3c3c3; background-color: #030303;border: 1px solid pink;" />', 
             (string) $submitInput
         );
 

@@ -22,4 +22,15 @@ class SubmitInput extends Input {
         $this->type = 'submit';
     }
 
+    /**
+     * Get HTML fragment.
+     * @return string
+     */
+    public function __toString () {
+        $stringValue = "<{$this->elementName} ";
+        $stringValue .= parent::getAttributeString();
+        $stringValue .= '/>';
+
+        return $stringValue;
+    }
 }
