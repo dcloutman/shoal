@@ -17,6 +17,6 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `user_salt` mediumtext NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
-  KEY `email` (`email`(255),`user_type`)
+  KEY `email` (`email`(760),`user_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
