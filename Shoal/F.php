@@ -36,7 +36,7 @@ class F {
      * @param mixed $indexKey
      * @throws \Shoal\Exceptions\ExpectedMemberMissingException
      */
-    public static function reindexByMultiValue(array $arr, $indexKey) {
+    public static function reindexByMultiValue (array $arr, $indexKey) {
         $result = [];
         $arrLength = count($arr);
         for ($i = 0; $i < $arrLength; $i++) {
