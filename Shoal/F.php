@@ -14,17 +14,29 @@ namespace Shoal;
 class F {
 
     /**
-     * Returns true if a value is an integer or s string representation of an integer.
+     * Returns true if a value is an integer or a string representation of an integer.
      * @param mixed $testVar The variable to test.
+     * @param integer $rangeMin The minimum allowable value, inclusive.
+     * @param integer $rangeMin The maximum allowable value, inclusive.
      * @return boolean true if $testVar is an integer or a string representation of an integer.
      */
-    public static function isTruthyInt ( $testVar ) {
+    public static function isTruthyInt ($testVar, $rangeMin = null, $rangeMax = null) {
         if (
             is_integer($testVar) ||
             ( is_numeric($testVar) && (integer) $testVar == $testVar )
         ) {
+            // If a range is specified, test value to ensure it is in the specified range.
+            if (null !== $rangeMin && $testVar < $rangeMin) {
+                return false;
+            }
+
+            if (null !== $rangeMax && $testVar > $rangeMax) {
+                return false;
+            }
+
             return true;
         }
+
 
         return false;
     }
