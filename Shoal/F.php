@@ -27,10 +27,20 @@ class F {
         ) {
             // If a range is specified, test value to ensure it is in the specified range.
             if (null !== $rangeMin && $testVar < $rangeMin) {
+                // Log error for invalid range types. Future versions requiring PHP 7 will use an int type hint and require an integer value.
+                if (!is_integer($rangeMin)) {
+                    error_log('Warning: A non integer value was passed as the parameter $rangeMin to isTruthyInt(). This will break in future versions.');
+                }
+
                 return false;
             }
 
             if (null !== $rangeMax && $testVar > $rangeMax) {
+                // Log error for invalid range types. Future versions requiring PHP 7 will use an int type hint and require an integer value.
+                if (is_integer($rangeMax)) {
+                    error_log('Warning: A non integer value was passed as the parameter $rangeMax to isTruthyInt(). This will break in future versions.');
+                }
+
                 return false;
             }
 
