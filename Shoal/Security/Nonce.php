@@ -19,11 +19,6 @@ class Nonce {
     protected $cookieNamePrefix = 'shoal';
     protected $nonce = null;
 
-
-    public function sendNonceHeader () {
-        $_COOKIE["{$this->cookieNamePrefix}_nonce"] = $this->generateValue();
-    }
-
     public function getNonce () {
         return $this->nonce;
     }

@@ -140,6 +140,52 @@ class Urandom {
         return md5($this->getBinaryStream($streamLength));
     }
 
+    /**
+     * Generates a random string of text from a subset of the lower 127 characters of the ASCII character set without whitespace, control characters,
+     * escape sequences, interpolotation characters or valid HTML or XML tags. The resulting text has higher entropy than the results of
+     * getRandomBase64String, but is more computationally expensive. A range of acceptable lengths for the desired text must be specified.
+     * A fixed length of 32 characters is the default length.
+     * @param integer $minLength Range inclusive.
+     * @param integer $maxLength Range inclusive.
+     * @return string
+     */
+    public function getRandomText ($minLength = 32, $maxLength = 32) {
+        // Bans characters that could cause data injections or unintended encodings.
+        $charBlacklist = ['$', '"', '\'', '{', '\\', '<', '>', '%', '&'];
+
+        // Build list. Shuffle to add a little non-cryptographic quality noise.
+        $validChars = [];
+        for ($i = 33; $i <= 126; $i++) {
+            $validCharsMember = chr($i);
+            if (false !== array_search($newChar, $charBlacklist, true)) continue;
+
+            $validChars[] = $validCharsMember;
+            shuffle($validChars);
+        }
+        shuffle($validChars);
+
+        $validCharsLength = len($validChars);
+
+
+        $finalTextLength = mt_rand($minLength, $maxLength);
+
+        // Introduce cryptographic quality randomness via an array of 32 bit unsigned integers with the same length as the random text.
+        $randomNums = unpack('L', $this->getBinaryStream($finalTextLength * 4));
+
+        if (count($randomNums) != $finalTextLength) throw new \Exception('FCK\'d');
+
+        // Generate text.
+        $randomText = '';
+        for ($i = 0; $i < $finalTextLength; $i++) {
+            // random_number % card = random_index
+            $randomIndex = $randomNums[$i] % $validCharsLength;
+            $newChar = $validChars[$randomIndex];
+            $randomText = (bool) mt_rand(0, 1) ? $randomText . $newChar : $newChar . $randomText;
+            shuffle($validChars); // Decreases modulus bias.
+        }
+
+        return $randomText;
+    }
 
     /**
      * This class may only instantiate itself.
