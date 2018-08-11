@@ -1,6 +1,15 @@
 # Lampfire Shoal
-The Lampfire Shoal consists of PSR-4 autoloader compatible PHP libraries written by David Cloutman. 
-It may be used in anyone's projects for any purpose. They are presented in the hope that they may be useful, but their usefulness is not guaranteed.
+#Lampfire Shoal
+Lampfire Shoal is a modern PHP library that consists of PSR-4 autoloader compatible PHP classes with source code written by David Cloutman, a senior PHP programmer with over 18 years of PHP experience. The code is currently alpha quality. Look for v1.0 some time in the future for stability and completeness.
+
+Lampfire Shoal may be used in anyone's projects for any purpose. This library is presented in the hope that they may be useful, but its usefulness is not guaranteed. (That's legal-speak for, "Please do not sue me if my code ruins your day or life.")
+
+Installable via Composer through packagist: lampfire/shoal
+https://packagist.org/packages/lampfire/shoal
+
+✌️
+
+## Release Notes
 
 ## Release Notes
 
