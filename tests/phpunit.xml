@@ -34,6 +34,9 @@
         <testsuite name="Shoal\Ui">
             <directory>./tests/Ui/</directory>
         </testsuite>
+        <testsuite name="Shoal\Util">
+            <directory>./tests/Util/</directory>
+        </testsuite>
     </testsuites>
 
 </phpunit>
