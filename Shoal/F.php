@@ -73,6 +73,46 @@ class F {
         return $result;
     }
 
+
+    /**
+     * Takes a hexidecimal string and compacts it into a base 256 number using all ascii characters.
+     * NOTE: The resulting string will likely contain whitespace and control characters, so don't write it to the terminal.
+     * @param string $hexString A hexidecimal representation of a number.
+     * @return string A base 256 representation of a number.
+     */
+    public static function hexToAscii256 ($hexString): string {
+        $asciiString = '';
+        $hexLength = strlen($hexString);
+        for ($i = 0; $i < $hexLength; $i += 2) {
+            $asciiString .= chr(hexdec(substr($hexString, $i, 2)));
+        }
+
+        return $asciiString;
+
+    }
+
+    // Shortcut for sha512 hashing.
+    public static function sha512 (string $source): string {
+        return hash('sha512', $source);
+    }
+
+    /**
+     * Convert a PHP data structure to JSON, compress it, and base64 encode it.
+     * @param array|object
+     * @return string $zippedJson
+     */
+    public static function encodeZippedJson ($data): string {
+        return base64_encode(gzcompress(json_encode($data)));
+    }
+
+    /**
+     * Convert a base 64 encoded, compressed, JSON string to a PHP data structure.
+     * @param string $zippedJson
+     * @return array|object
+     */
+    public static function decodeZippedJson (string $zippedJson) {
+        return json_decode(gzuncompress(base64_decode($zippedJson)));
+    }
 }
 
 
