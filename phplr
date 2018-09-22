@@ -1,2 +1,24 @@
 #!/usr/bin/env bash
-find . -name '*.php' -exec php -l {} \; | grep -i 'parse error'
+
+# The path at which we begin scanning. Default to current directory.
+basedir='.'
+
+# If an argument is supplied, treat it as the path of the file or root directory to scan.
+if [ $# -gt 0 ]; then
+    # echo "Arguments detected"
+    if [ -f $1 ]; then
+        # echo "First argument is a file. Linting single file $1"
+        php -l $1
+        exit 0
+    elif [ -d $1 ]; then
+        # echo "First argument is a directory. Setting basedir to $1"
+        basedir=$1
+    else
+        echo "$1 is neither a file nor a directory. Exiting with no files linted."
+        exit 1
+    fi
+fi
+
+# echo "Linting recursively starting at $basedir"
+find $basedir -name '*.php' -exec php -l {} \; | grep -i 'parse error'
+exit 0
