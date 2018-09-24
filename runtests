@@ -3,6 +3,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
+coverage_flags=''
+if [ $# -gt 0 ]; then
+    if [ $1=='coverage' ]; then
+        coverage_flags='--coverage-text --whitelist=Shoal'
+    fi
+fi
+
 CONFIG_FILE='./tests/phpunit.xml'
 
 if [ -d ./tests ] && [ -f $CONFIG_FILE ] && [ -x ./vendor/bin/phpunit ]; then
@@ -16,7 +23,8 @@ if [ -d ./tests ] && [ -f $CONFIG_FILE ] && [ -x ./vendor/bin/phpunit ]; then
         rm ./tests/tmp/errors.log
     fi
 
-    ./vendor/bin/phpunit --verbose  --configuration=$CONFIG_FILE ./tests
+#    ./vendor/bin/phpunit --verbose --coverage-text --whitelist=Shoal --configuration=$CONFIG_FILE ./tests
+    ./vendor/bin/phpunit --verbose  $coverage_flags --configuration=$CONFIG_FILE ./tests
 else
     echo "Could not resolve path to phpunit binary, the configuration XML file (phpunit.xml), or the tests directory."
 fi
