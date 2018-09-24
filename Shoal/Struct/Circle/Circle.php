@@ -102,8 +102,9 @@ class Circle implements \Iterator, \Countable {
     /**
      * Adds a CircleNode ahead of the current node.
      * @param CircleNode $newNode
+     * @return void
      */
-    public function insertAfterCurrenth(CircleNode $newNode): CircleNode {
+    public function insertAfterCurrent(CircleNode $newNode): void {
         // Set links inside new node.
         $newNode->setNext($this->currentNode->getNext());
         $newNode->setPrevious($this->currentNode);
@@ -118,8 +119,9 @@ class Circle implements \Iterator, \Countable {
     /**
      * Adds a CircleNode before the current node.
      * @param CircleNode $newNode
+     * @return void
      */
-    public function insertBeforeCurrent(CircleNode $newNode): CircleNode {
+    public function insertBeforeCurrent(CircleNode $newNode): void {
         // Set links inside new node.
         $newNode->setPrevious($this->currentNode->getPrevious());
         $newNode->setNext($this->currentNode);
@@ -132,10 +134,10 @@ class Circle implements \Iterator, \Countable {
     }
 
     /**
-     * Returns true when the first node is current.
+     * Returns true when the first CircleNode is current.
      * @return boolean
      */
-    public function isFirstCurrent(): boolean {
+    public function isFirstCurrent(): bool {
         if ($this->currentNode === $this->firstNode) {
             return true;
         }
@@ -144,10 +146,10 @@ class Circle implements \Iterator, \Countable {
     }
 
     /**
-     * Tests to see if the circle has only one node.
+     * Tests to see if the Circle has only one node.
      * @return boolean
      */
-    public function hasOnlyOneNode(): boolean {
+    public function hasOnlyOneNode(): bool {
         if (
             $this->currentNode->getNext() === $this->currentNode &&
             $this->currentNode->getPrevious() === $this->currentNode
@@ -180,9 +182,9 @@ class Circle implements \Iterator, \Countable {
     /**
      * Remove a node from the circle. If the current node is removed, the next node will become the current node.
      * @param CircleNode $nodeToRemove
-     * @param boolean $unsetNode By default, a node is unset from memory when it is removed. Passing false insures that other references to the node are preserved.
+     * @param void
      */
-    public function remove(CircleNode $nodeToRemove) {
+    public function remove(CircleNode $nodeToRemove): void {
         // Test to see if the node is the only node in the Circle.
         if ($this->hasOnlyOneNode()) {
             // If it is, throw an exception. Circles are not allowed to be empty.
@@ -198,7 +200,7 @@ class Circle implements \Iterator, \Countable {
         // Make the next node the next node of the previous node.
         $nodeToRemove->getPrevious()->setNext($nodeToRemove->getNext());
 
-        // If the current node is being remove, point the currentNode variable at the next node. This avoids a null pointer.
+        // If the current node is being removed, point the currentNode variable at the next node. This avoids a null pointer.
         if ($this->currentNode === $nodeToRemove) {
             $this->currentNode = $nodeToRemove->getNext();
         }
@@ -213,22 +215,25 @@ class Circle implements \Iterator, \Countable {
 
     /**
      * Removes the node previous to the current node from the circle.
+     * @return void
      */
-    public function removePrevious() {
+    public function removePrevious(): void {
         $this->remove($this->currentNode->getPrevious());
     }
 
     /**
      * Removes the current node from the circle and sets the next node as the current node.
+     * @return void
      */
-    public function removeCurrent() {
+    public function removeCurrent(): void {
         $this->remove($this->currentNode);
     }
 
     /**
      * Removes the node next from the current node from the circle.
+     * @return void
      */
-    public function removeNext() {
+    public function removeNext(): void {
         $this->remove($this->currentNode->getNext());
     }
 
