@@ -13,7 +13,7 @@
  * @author David Cloutman
  * @license MIT
  */
-
+declare(strict_types=1);
 namespace Shoal\Struct\Circle;
 
 
@@ -43,7 +43,7 @@ class Circle implements \Iterator, \Countable {
      * This construction optionally takes an initial node.
      * @param CircleNode|null $first Sets the first node in the circle by reference. Empty Circle instances are not allowed.
      */
-    public function __construct (CircleNode $first) {
+    public function __construct(CircleNode $first) {
         $this->setFirst($first);
         $this->setCurrent($first);
 
@@ -53,8 +53,9 @@ class Circle implements \Iterator, \Countable {
     /**
      * Set the first node in the circle.
      * @param CircleNode $first Sets the first node in the circle by reference.
+     * @return void
      */
-    public function setFirst (CircleNode $first) {
+    public function setFirst(CircleNode $first): void {
         $this->firstNode = $first;
     }
 
@@ -62,7 +63,7 @@ class Circle implements \Iterator, \Countable {
      * Cet a reference to the first node being pointed to in the.
      * @return CircleNode
     */
-    public function getFirst () {
+    public function getFirst(): CircleNode {
         return $this->firstNode;
     }
 
@@ -70,7 +71,7 @@ class Circle implements \Iterator, \Countable {
      * Set the current node in the circle by reference.
      * @param CircleNode $current Sets the current node in the circle by reference.
      */
-    public function setCurrent (CircleNode $current) {
+    public function setCurrent(CircleNode $current): void {
         $this->currentNode = $current;
    }
 
@@ -78,7 +79,7 @@ class Circle implements \Iterator, \Countable {
      * Cet a reference to the current node being pointed to in the.
      * @return CircleNode
     */
-    public function getCurrent () {
+    public function getCurrent(): CircleNode {
         return $this->currentNode;
     }
 
@@ -86,7 +87,7 @@ class Circle implements \Iterator, \Countable {
      * Get the next node in the circle without changing the current node.
      * @return CircleNode The next node in the circle.
      */
-    public function getNext () {
+    public function getNext(): CircleNode {
         return $this->currentNode->getNext();
     }
 
@@ -94,7 +95,7 @@ class Circle implements \Iterator, \Countable {
      * Get the previous node in the circle without changing the current node.
      * @return CircleNode The previous node in the circle.
      */
-    public function getPrevious () {
+    public function getPrevious(): CircleNode {
         return $this->currentNode->getPrevious();
     }
 
@@ -102,7 +103,7 @@ class Circle implements \Iterator, \Countable {
      * Adds a CircleNode ahead of the current node.
      * @param CircleNode $newNode
      */
-    public function insertAfterCurrent (CircleNode $newNode) {
+    public function insertAfterCurrenth(CircleNode $newNode): CircleNode {
         // Set links inside new node.
         $newNode->setNext($this->currentNode->getNext());
         $newNode->setPrevious($this->currentNode);
@@ -118,7 +119,7 @@ class Circle implements \Iterator, \Countable {
      * Adds a CircleNode before the current node.
      * @param CircleNode $newNode
      */
-    public function insertBeforeCurrent (CircleNode $newNode) {
+    public function insertBeforeCurrent(CircleNode $newNode): CircleNode {
         // Set links inside new node.
         $newNode->setPrevious($this->currentNode->getPrevious());
         $newNode->setNext($this->currentNode);
@@ -134,7 +135,7 @@ class Circle implements \Iterator, \Countable {
      * Returns true when the first node is current.
      * @return boolean
      */
-    public function isFirstCurrent () {
+    public function isFirstCurrent(): boolean {
         if ($this->currentNode === $this->firstNode) {
             return true;
         }
@@ -146,7 +147,7 @@ class Circle implements \Iterator, \Countable {
      * Tests to see if the circle has only one node.
      * @return boolean
      */
-    public function hasOnlyOneNode () {
+    public function hasOnlyOneNode(): boolean {
         if (
             $this->currentNode->getNext() === $this->currentNode &&
             $this->currentNode->getPrevious() === $this->currentNode
@@ -161,7 +162,7 @@ class Circle implements \Iterator, \Countable {
      * Advances the current node to the next node and then returns the new current node. Essentially the same as calling next() and then current().
      * @return CircleNode
      */
-    public function turn () {
+    public function turn(): CircleNode {
         $this->next();
         return $this->getCurrent();
     }
@@ -170,7 +171,7 @@ class Circle implements \Iterator, \Countable {
      * Reverses the current node to the previous node and then returns the new current node. The opposite of turn().
      * @return CircleNode
      */
-    public function reverse () {
+    public function reverse(): CircleNode {
         $this->currentNode = $this->currentNode->getPrevious();
         return $this->getCurrent();
     }
@@ -181,7 +182,7 @@ class Circle implements \Iterator, \Countable {
      * @param CircleNode $nodeToRemove
      * @param boolean $unsetNode By default, a node is unset from memory when it is removed. Passing false insures that other references to the node are preserved.
      */
-    public function remove (CircleNode $nodeToRemove) {
+    public function remove(CircleNode $nodeToRemove) {
         // Test to see if the node is the only node in the Circle.
         if ($this->hasOnlyOneNode()) {
             // If it is, throw an exception. Circles are not allowed to be empty.
@@ -213,37 +214,47 @@ class Circle implements \Iterator, \Countable {
     /**
      * Removes the node previous to the current node from the circle.
      */
-    public function removePrevious () {
+    public function removePrevious() {
         $this->remove($this->currentNode->getPrevious());
     }
 
     /**
      * Removes the current node from the circle and sets the next node as the current node.
      */
-    public function removeCurrent () {
+    public function removeCurrent() {
         $this->remove($this->currentNode);
     }
 
     /**
      * Removes the node next from the current node from the circle.
      */
-    public function removeNext () {
+    public function removeNext() {
         $this->remove($this->currentNode->getNext());
     }
 
-    /**
-     * Applies acallback function to each node in the circle.
-     * @param callable $func The function to be applied. The function must one parameter which will store each instance of TreeNode to which the callback is passed.
+    /** TODO: Implement or delete. 2018-09-24 DWC
+     * Applies a callback function to each node in the circle.
+     * @param callable $func The function to be applied. The function must have one parameter of the type CircleNode which will take a CircleNode from within the Circle.
+     * @param object $bindable An object to which $this inside $func should be bound. This is a great mechanism for capturing results of the callback.
+     * @return void
      */
-    public function applyFunction (callable $func) {
+    public function applyFunction(callable $func, ?object $bindable = null): void {
+        if (null !== $bindable) {
+            $func->bindTo($bindable);
+        }
 
+        $node = $startingNode = $this->getCurrent();
+        do {
+            $func($node);
+            $node = $this->getNext();
+        } while($node !== $currentNode);
     }
 
     /**
      * Returns the current node in the circle. Implements Iterator interface.
      * @return mixed
      */
-    public function current () {
+    public function current() {
         return $this->getCurrent();
     }
 
@@ -251,7 +262,7 @@ class Circle implements \Iterator, \Countable {
      * Returns a unique identifier for the current CircleNode object. Implements Iterator interface.
      * @return mixed A scalar value.
      */
-    public function key () {
+    public function key() {
         return spl_object_hash($this->currentNode);
     }
 
@@ -259,7 +270,7 @@ class Circle implements \Iterator, \Countable {
      * Implements Iterator interface.
      * @return void
      */
-    public function next () {
+    public function next(): void {
         $this->currentNode = $this->currentNode->getNext();
     }
 
@@ -267,7 +278,7 @@ class Circle implements \Iterator, \Countable {
      * Implements Iterator interface.
      * @return void
      */
-    public function rewind () {
+    public function rewind(): void {
         $this->currentNode = $this->firstNode;
     }
 
@@ -276,7 +287,7 @@ class Circle implements \Iterator, \Countable {
      * Implements Iterator interface.
      * @return boolean
      */
-    public function valid () {
+    public function valid(): bool {
         if ($this->currentNode instanceof CircleNode) {
             return true;
         }
@@ -288,7 +299,7 @@ class Circle implements \Iterator, \Countable {
      * Returns the number of CircleNodes objects in the Circle.
      * @return boolean
      */
-    public function count () {
+    public function count() {
         return $this->count;
     }
 }

@@ -13,7 +13,7 @@
  * @author David Cloutman
  * @license MIT
  */
-
+declare(strict_types=1);
 namespace Shoal\Struct\Circle;
 
 
@@ -36,7 +36,7 @@ class CircleNode {
     /**
      * Creates a new CircleNode and links it to itself.
      */
-    public function __construct () {
+    public function __construct() {
         // Default next and previous nodes to the current node.
         $this->nextNode = $this;
         $this->previousNode = $this;
@@ -45,9 +45,10 @@ class CircleNode {
     /**
      * Changes the reference to the next node in the circle.
      * @param CircleNode $nextNode
+     * @return void
      * @internal
      */
-    public function setNext (CircleNode $nextNode) {
+    public function setNext(CircleNode $nextNode): void {
         $this->nextNode = $nextNode;
     }
 
@@ -55,16 +56,17 @@ class CircleNode {
      * Get a reference to the next CircleNode in a circle.
      * @return CircleNode The next node in the circle.
      */
-    public function getNext () {
+    public function getNext(): CircleNode {
         return $this->nextNode;
     }
 
     /**
      * Changes the reference to the previous node in the circle.
      * @param CircleNode $previousNode
+     * @return void
      * @internal
      */
-    public function setPrevious (CircleNode $previousNode) {
+    public function setPrevious(CircleNode $previousNode): void {
         $this->previousNode = $previousNode;
     }
 
@@ -72,7 +74,7 @@ class CircleNode {
      * Get a reference to the next CircleNode in a circle.
      * @return CircleNode The previous node in the circle.
      */
-    public function getPrevious () {
+    public function getPrevious(): CircleNode {
         return $this->previousNode;
     }
 }

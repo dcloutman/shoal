@@ -8,7 +8,7 @@
  * @author David Cloutman
  * @license MIT
  */
-
+declare(strict_types=1);
 namespace Shoal\Struct\Circle;
 
 /**
@@ -21,7 +21,7 @@ class LastCircleNodeException extends \Exception {
      * @param integer $code
      * @param \Exception $previous
      */
-    public function __construct($message = null, $code = 0, \Exception $previous = null) {
+    public function __construct(string $message = null, int $code = 0, ?\Exception $previous = null) {
         if (empty($message)) {
             $message = 'A Circle cannot be made empty. A Circle must have one or more CircleNode elements.';
         }
